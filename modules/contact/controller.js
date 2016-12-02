@@ -25,6 +25,7 @@ var create = function(req, res){
   Operations.Crud.create(req.body)
   .then((result)=>{
     res.json(successJSON(result));
+    Operations.Notifier.notify(result);
   }, (err)=>{
     res.json(err);
   });

@@ -15,6 +15,10 @@ var modelSchema = new Schema({
   },
   "message": {
     "type": String
+  },
+  "contactedOn":{
+    type: Schema.Types.Date,
+    default: Date.now
   }
 });
 

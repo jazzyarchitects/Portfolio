@@ -260,5 +260,21 @@ jQuery(function($){
         'slow');
 	});
 
+  $("#contact_me_send_message").click(function(e){
+    e.preventDefault();
+    var data = {
+      name: $("input[name='contactName']").val(),
+      email: $("input[name='contactEmail']").val(),
+      subject: $("input[name='contactSubject']").val(),
+      message: $("textarea[name='contactMessage']").val()
+    }
+    var url = window.location.protocol+"//"+window.location.host+"/api/contact";
+    $.post(url, data, function(response){
+      if(response.success){
+        $("#contact_me_send_message").html('Thank You. I will revert back soon. :)')
+      }
+      // alert(JSON.stringifyO(response));
+    });
+  });
 
 });
