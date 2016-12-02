@@ -10,10 +10,10 @@ if(password===undefined){
 let transporter = nodemailer.createTransport('smtps://'+user+':'+password+'@smtp.gmail.com');
 
 let notify = function(response){
-  let message = "Hello,<br / ><b>"+response.name+"</b> tried to contact you via your PORTFOLIO.<br />With the following details:";
+  let message = "Hello,<br / ><b><u>"+response.name+"</u></b> tried to contact you via your PORTFOLIO.<br />With the following details:<br />";
   message += "<b>Subject:</b>    "+response.subject+"<br />";
   message += "<b>Messgae:</b>    "+response.message+"<br /><br />";
-  message += "<b>Reply at: </b>  "+response.email;
+  message += "<b>Reply to: </b>  "+response.email;
 
 
   let mailOptions = {
