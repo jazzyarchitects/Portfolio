@@ -1,6 +1,7 @@
 "use strict";
 
 const nodemailer = require('nodemailer');
+const chalk = require('chalk');
 let user = "jibinmathews7@gmail.com";
 let password = process.env.PORTFOLIO_NODEMAILER_PASSWORD;
 if(password===undefined){
