@@ -31,5 +31,9 @@ module.exports = function(app){
 
   app.use('/api', router);
 
+  app.use((req, res)=>{
+        res.redirect('/');
+    });
+
 
 }

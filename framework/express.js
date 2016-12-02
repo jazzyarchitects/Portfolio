@@ -2,6 +2,7 @@
 
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -39,12 +40,25 @@ module.exports = function (app) {
     app.use(cookieParser());
 
 
-
     // Request body parsing middleware should be above methodOverride
     app.use(bodyParser());
 
-
-    app.use(express.static('public'));
+app.use(function (req, res, next) {
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+    next()
+});
+    app.use(express.static(path.join(__dirname, '..', 'public')));
+    app.all('/',(req, res)=>{
+        fs.readFile(path.join(__dirname,'..','public','index.html'), function(err, buf){
+            if(err) {
+                return res.end("Some Error");
+            }
+            res.set('Content-Type', 'text/html');
+            res.send(buf.toString());
+        });
+    });
 
     //Error handler
     if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
@@ -53,7 +67,6 @@ module.exports = function (app) {
             res.sendFile(path.join(__dirname, "..", "tmp", "routes.html"));
         });
     }
-
 
     var len = "App is now live!".length;
     var col = process.stdout.columns?process.stdout.columns:40;

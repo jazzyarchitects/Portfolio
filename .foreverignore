@@ -33,3 +33,7 @@ Gruntfile.js
 **/.tmp/**
 **/client/**
 **/.sass-cache/**
+
+tmp/
+./tmp
+tmp
