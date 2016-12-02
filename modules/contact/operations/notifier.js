@@ -19,7 +19,7 @@ let notify = function(response){
   let mailOptions = {
     from: '"Jibin Mathews" <jibinmathews7@gmail.com>',
     to: 'jibinmathews7@gmail.com',
-    subject: response.name+"contacted you via Portfolio",
+    subject: response.name+" contacted via Portfolio",
     text: message,
     html: message
   };
