@@ -757,7 +757,7 @@ display: flex;
 
 
 #facts {
-  background-image: url("img/home-img3.jpg");
+  background-image: url("img/project-banner.jpg");
   background-position: center center;
   background-size: 100% 100%;
   display: inline;
@@ -773,7 +773,7 @@ display: flex;
 
 
 .facts-overlay {
-  background: rgba(255, 255, 255, 0.92) none repeat scroll 0 0;
+  background: rgba(255, 255, 255, 0.75) none repeat scroll 0 0;
   height: 100%;
   padding: 100px 0;
   width: 100%;
