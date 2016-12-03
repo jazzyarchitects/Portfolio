@@ -43,12 +43,12 @@ module.exports = function (app) {
     // Request body parsing middleware should be above methodOverride
     app.use(bodyParser());
 
-app.use(function (req, res, next) {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.header('Expires', '-1');
-    res.header('Pragma', 'no-cache');
-    next()
-});
+    app.use(function (req, res, next) {
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+        res.header('Expires', '-1');
+        res.header('Pragma', 'no-cache');
+        next()
+    });
     app.use(express.static(path.join(__dirname, '..', 'public')));
     app.all('/',(req, res)=>{
         fs.readFile(path.join(__dirname,'..','public','index.html'), function(err, buf){
