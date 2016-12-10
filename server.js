@@ -19,7 +19,7 @@ exports.start = (isTest)=>{
     console.log(chalk.red.bold("Server running at port: "+server_port));
   });
   process.on('message', function(message) {
-    if(message.text === 'shutdown') {
+    if(message.command === 'shutdown' && message.from === 'master') {
       process.exit(0);
     }
   });
@@ -42,12 +42,12 @@ if(cluster.isMaster){
 
   //Watcher for no downtime updatation
   let watcher = chokidar.watch('.',{
-    ignored: ['tmp/*','node_modules/', 'package.json'],
+    ignored: ['tmp/*'],
     persistent: true,
     ignoreInitial: true,
     cwd: '.',
     depth: 99,
-    interval: 100
+    interval: 1000
   }).on('all', restartWorkers);
 
   let numWorkers = require('os').cpus().length;
@@ -73,21 +73,29 @@ if(cluster.isMaster){
   exports.start(false);
 }
 
-
+let workerIds = [];
 function restartWorkers(event, path){
-  let workerIds = [];
   for(let wid in cluster.workers){
     workerIds.push(wid)
   }
-  workerIds.forEach((wid)=>{
+  stopWorker();
+}
+
+function stopWorker(){
+  if(workerIds.length<=0){
+    return;
+  }
+  if(Object.keys(cluster.workers).length>0){
+    let wid = workerIds.pop();
     cluster.workers[wid].send({
-      text: 'shutdown',
+      command: 'shutdown',
       from: 'master'
     });
     setTimeout(()=>{
       if(cluster.workers[wid]){
         cluster.workers[wid].process.kill('SIGKILL');
       }
-    }, 10000);
-  });
+    }, 20*1000);
+  }
+  setTimeout(stopWorker, 5*1000);
 }

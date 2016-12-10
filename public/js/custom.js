@@ -146,9 +146,9 @@ jQuery(function($){
     owl3.owlCarousel({
         items : 6, //4 items above 1024px browser width
         itemsDesktop : [1024,6], //3 items between 1024px and 901px
-        itemsDesktopSmall : [900,5], // betweem 900px and 601px
-        itemsTablet: [600,4], //1 items between 600 and 0
-        itemsMobile : 3 // itemsMobile disabled - inherit from itemsTablet option
+        itemsDesktopSmall : [900,4], // betweem 900px and 601px
+        itemsTablet: [600,2], //1 items between 600 and 0
+        itemsMobile : 2 // itemsMobile disabled - inherit from itemsTablet option
     });
 
     // Slide Navigation
