@@ -6,6 +6,8 @@ const cluster = require('cluster');
 const chokidar = require('chokidar');
 
 let app = undefined;
+let numWorkers = require('os').cpus().length;
+let workerCount = 0;
 
 const server_port = config.server.port;
 
@@ -38,30 +40,44 @@ process.on('unhandledException', (error, m)=> {
   console.log(chalk.red("Unhandled Exception at: Error "), m, chalk.red(" reason: "), chalk.red(error));
 })
 
+function createWorkers(){
+  if(workerCount<=0){
+    return;
+  }else{
+    cluster.fork();
+    workerCount--;
+    setTimeout(createWorkers, 2*1000);
+  }
+}
+
 if(cluster.isMaster){
 
   //Watcher for no downtime updatation
   let watcher = chokidar.watch('.',{
-    ignored: ['tmp/*'],
+    ignored: ['tmp/*','public/*'],
     persistent: true,
     ignoreInitial: true,
     cwd: '.',
     depth: 99,
-    interval: 1000
+    interval: 10000
   }).on('all', restartWorkers);
 
-  let numWorkers = require('os').cpus().length;
 
   if(numWorkers === 1){
     numWorkers *= 2;
   }
 
   console.log(chalk.yellow("Master setting up "+numWorkers+" workers"));
+  workerCount = numWorkers;
 
+  createWorkers();
 
-  for(let i=0;i<numWorkers;i++){
-    cluster.fork();
-  }
+  // for(let i=0;i<numWorkers;i++){
+  //   setTimeout(()=>{
+  //     cluster.fork()
+  //   }, 2*1000);
+  //   // cluster.fork();
+  // }
   cluster.on('online', (worker)=>{
     console.log(chalk.magenta("Worker thread: "+worker.process.pid+" is online"));
   });
@@ -74,10 +90,19 @@ if(cluster.isMaster){
 }
 
 let workerIds = [];
+let appRestarting = false;
+
 function restartWorkers(event, path){
+  if(appRestarting){
+    return;
+  }
   for(let wid in cluster.workers){
     workerIds.push(wid)
   }
+  appRestarting = true;
+  setTimeout(()=>{
+    appRestarting = false;
+  }, numWorkers*1000*5);
   stopWorker();
 }
 
