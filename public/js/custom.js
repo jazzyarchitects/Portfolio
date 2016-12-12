@@ -1,3 +1,5 @@
+"use strict";
+
 /**
 	* Template Name: MU Material
 	* Version: 1.1
