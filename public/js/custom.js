@@ -25,9 +25,7 @@
 
 **/
 
-jQuery(function($){
-
-
+jQuery(function($) {
 	/* ----------------------------------------------------------- */
 	/*  1. Mobile MENU
 	/* ----------------------------------------------------------- */
@@ -38,20 +36,20 @@ jQuery(function($){
 	/*  2. Experience SLider(Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	var owl = $("#owl-carousel");
+	let owl = $("#owl-carousel");
     owl.owlCarousel({
-        items : 2, //4 items above 1024px browser width
-        itemsDesktop : [1024,2], //3 items between 1024px and 901px
-        itemsDesktopSmall : [900,2], // betweem 900px and 601px
-        itemsTablet: [600,1], //1 items between 600 and 0
-        itemsMobile : 1 // itemsMobile disabled - inherit from itemsTablet option
+        items: 2, // 4 items above 1024px browser width
+        itemsDesktop: [1024, 2], // 3 items between 1024px and 901px
+        itemsDesktopSmall: [900, 2], // betweem 900px and 601px
+        itemsTablet: [600, 1], // 1 items between 600 and 0
+        itemsMobile: 1 // itemsMobile disabled - inherit from itemsTablet option
     });
     // Slide Navigation
-    jQuery(".next").click(function(){
+    jQuery(".next").click(function() {
         owl.trigger('owl.next');
     });
 
-    jQuery(".prev").click(function(){
+    jQuery(".prev").click(function() {
         owl.trigger('owl.prev');
     });
 
@@ -60,20 +58,20 @@ jQuery(function($){
 	/*  3. EDUCATION SLIDER (Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	var owl1 = $("#owl-carousel1");
+	let owl1 = $("#owl-carousel1");
 	owl1.owlCarousel({
-	    items : 3, //4 items above 1024px browser width
-	    itemsDesktop : [1024,3], //3 items between 1024px and 901px
-	    itemsDesktopSmall : [900,2], // betweem 900px and 601px
-	    itemsTablet: [600,1], //1 items between 600 and 0
-	    itemsMobile : 1 // itemsMobile disabled - inherit from itemsTablet option
+	    items: 3, // 4 items above 1024px browser width
+	    itemsDesktop: [1024, 3], // 3 items between 1024px and 901px
+	    itemsDesktopSmall: [900, 2], // betweem 900px and 601px
+	    itemsTablet: [600, 1], // 1 items between 600 and 0
+	    itemsMobile: 1 // itemsMobile disabled - inherit from itemsTablet option
 	});
 	// Slide Navigation
-	jQuery(".next1").click(function(){
+	jQuery(".next1").click(function() {
 	    owl1.trigger('owl.next');
 	});
 
-	jQuery(".prev1").click(function(){
+	jQuery(".prev1").click(function() {
 	    owl1.trigger('owl.prev');
 	});
 
@@ -90,21 +88,19 @@ jQuery(function($){
       $('#portfolio-popup').addClass("portfolio-popup-show");
       $('#portfolio-popup').animate({
 	      "opacity": 1
-      },500);
-      var portfolio_detailscontent = $(this).parent(".mix").find(".portfolio-detail").html();
+      }, 500);
+      let portfolio_detailscontent = $(this).parent(".mix").find(".portfolio-detail").html();
 	  $(".portfolio-popup-inner").html(portfolio_detailscontent);
-
     });
 
     // WHEN CLICK CLOSE BUTTON
 
-    $(document).on('click','.modal-close-btn', function(event) {
+    $(document).on('click', '.modal-close-btn', function(event) {
 	    event.preventDefault();
 		$('#portfolio-popup').removeClass("portfolio-popup-show");
 		$('#portfolio-popup').animate({
 		      "opacity": 0
-	    },500);
-
+	    }, 500);
     });
 
 	/* ----------------------------------------------------------- */
@@ -120,45 +116,44 @@ jQuery(function($){
 	/*  6. TESTIMONIAL SLIDER (Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	var owl2 = $("#owl-carousel2");
+	let owl2 = $("#owl-carousel2");
     owl2.owlCarousel({
-        items : 2, //4 items above 1024px browser width
-        itemsDesktop : [1024,2], //3 items between 1024px and 901px
-        itemsDesktopSmall : [900,2], // betweem 900px and 601px
-        itemsTablet: [600,1], //1 items between 600 and 0
-        itemsMobile : 1 // itemsMobile disabled - inherit from itemsTablet option
+        items: 2, // 4 items above 1024px browser width
+        itemsDesktop: [1024, 2], // 3 items between 1024px and 901px
+        itemsDesktopSmall: [900, 2], // betweem 900px and 601px
+        itemsTablet: [600, 1], // 1 items between 600 and 0
+        itemsMobile: 1 // itemsMobile disabled - inherit from itemsTablet option
     });
 
     // Slide Navigation
-    jQuery(".next2").click(function(){
+    jQuery(".next2").click(function() {
         owl2.trigger('owl.next');
     });
 
-    jQuery(".prev2").click(function(){
+    jQuery(".prev2").click(function() {
         owl2.trigger('owl.prev');
     });
-
 
 
   /* ----------------------------------------------------------- */
   /*  6 b. SOCIAL SLIDER (Owl Carousel)
   /* ----------------------------------------------------------- */
 
-  var owl3 = $("#owl-carousel3");
+  let owl3 = $("#owl-carousel3");
     owl3.owlCarousel({
-        items : 6, //4 items above 1024px browser width
-        itemsDesktop : [1024,6], //3 items between 1024px and 901px
-        itemsDesktopSmall : [900,4], // betweem 900px and 601px
-        itemsTablet: [600,2], //1 items between 600 and 0
-        itemsMobile : 2 // itemsMobile disabled - inherit from itemsTablet option
+        items: 6, // 4 items above 1024px browser width
+        itemsDesktop: [1024, 6], // 3 items between 1024px and 901px
+        itemsDesktopSmall: [900, 4], // betweem 900px and 601px
+        itemsTablet: [600, 2], // 1 items between 600 and 0
+        itemsMobile: 2 // itemsMobile disabled - inherit from itemsTablet option
     });
 
     // Slide Navigation
-    jQuery(".next3").click(function(){
+    jQuery(".next3").click(function() {
         owl3.trigger('owl.next');
     });
 
-    jQuery(".prev3").click(function(){
+    jQuery(".prev3").click(function() {
         owl3.trigger('owl.prev');
     });
 
@@ -167,24 +162,26 @@ jQuery(function($){
 	/*  7. MENU SMOOTH SCROLLING
 	/* ----------------------------------------------------------- */
 
-	//MENU SCROLLING WITH ACTIVE ITEM SELECTED
+	// MENU SCROLLING WITH ACTIVE ITEM SELECTED
 
 	// Cache selectors
-	var lastId,
+	let lastId,
 	topMenu = $(".menu-scroll"),
 	topMenuHeight = topMenu.outerHeight()+13,
 	// All list items
 	menuItems = topMenu.find('a[href^=\\#]'),
 	// Anchors corresponding to menu items
-	scrollItems = menuItems.map(function(){
-	  var item = $($(this).attr("href"));
-	  if (item.length) { return item; }
+	scrollItems = menuItems.map(function() {
+	  let item = $($(this).attr("href"));
+	  if (item.length) {
+ return item;
+}
 	});
 
 	// Bind click handler to menu items
 	// so we can get a fancy scroll animation
-	menuItems.click(function(e){
-	  var href = $(this).attr("href"),
+	menuItems.click(function(e) {
+	  let href = $(this).attr("href"),
 	      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+15;
 	  jQuery('html, body').stop().animate({
 	      scrollTop: offsetTop
@@ -193,18 +190,18 @@ jQuery(function($){
 	});
 
 	// Bind to scroll
-	jQuery(window).scroll(function(){
+	jQuery(window).scroll(function() {
 	   // Get container scroll position
-	   var fromTop = $(this).scrollTop()+topMenuHeight;
+	   let fromTop = $(this).scrollTop()+topMenuHeight;
 
 	   // Get id of current scroll item
-	   var cur = scrollItems.map(function(){
+	   let cur = scrollItems.map(function() {
 	     if ($(this).offset().top < fromTop)
 	       return this;
 	   });
 	   // Get the id of the current element
 	   cur = cur[cur.length-1];
-	   var id = cur && cur.length ? cur[0].id : "";
+	   let id = cur && cur.length ? cur[0].id : "";
 
 	   if (lastId !== id) {
 	       lastId = id;
@@ -222,7 +219,7 @@ jQuery(function($){
 	jQuery(window).load(function() { // makes sure the whole site is loaded
       $('.progress').fadeOut(); // will first fade out the loading animation
       $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
-      $('body').delay(100).css({'overflow':'visible'});
+      $('body').delay(100).css({'overflow': 'visible'});
     })
 
 	/* ----------------------------------------------------------- */
@@ -262,21 +259,20 @@ jQuery(function($){
         'slow');
 	});
 
-  $("#contact_me_send_message").click(function(e){
+  $("#contact_me_send_message").click(function(e) {
     e.preventDefault();
-    var data = {
+    let data = {
       name: $("input[name='contactName']").val(),
       email: $("input[name='contactEmail']").val(),
       subject: $("input[name='contactSubject']").val(),
       message: $("textarea[name='contactMessage']").val()
     }
-    var url = window.location.protocol+"//"+window.location.host+"/api/contact";
-    $.post(url, data, function(response){
-      if(response.success){
+    let url = window.location.protocol+"//"+window.location.host+"/api/contact";
+    $.post(url, data, function(response) {
+      if(response.success) {
         $("#contact_me_send_message").html('Thank You. I will revert back soon. :)')
       }
       // alert(JSON.stringifyO(response));
     });
   });
-
 });

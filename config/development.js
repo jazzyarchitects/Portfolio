@@ -1,6 +1,7 @@
-'use strict';
- var path = require('path');
- var rootPath = path.join(__dirname, "..");
+"use strict";
+
+ let path = require('path');
+ let rootPath = path.join(__dirname, "..");
 
  module.exports = {
      root: rootPath,
@@ -17,7 +18,7 @@
      server: {
          port: Number(process.env.PORT || 3000)
      },
-     secret:{
+     secret: {
         jwt: "F398M*GwK6q8FfEEO%Kx"
      }
  };

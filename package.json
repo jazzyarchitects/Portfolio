@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.12.1",
+    "eslint-config-google": "^0.7.1",
     "request": "^2.67.0"
   },
   "jgenConfig": {

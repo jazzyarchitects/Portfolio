@@ -1,28 +1,27 @@
 "use strict";
 
-var fs = require('fs');
-var path = require('path');
-var express = require('express');
+let fs = require('fs');
+let path = require('path');
+let express = require('express');
 
-module.exports = function(app){
+module.exports = function(app) {
+  let router = express.Router();
 
-  var router = express.Router();
-
-  var moduleDirectory = path.join(__dirname, '..', "./modules");
-  fs.readdirSync(moduleDirectory).forEach(function(model){
-    var routesPath = path.join(moduleDirectory, model, 'routes.js');
-    var stats = fs.statSync(path.join(moduleDirectory, model));
-    if(!stats.isDirectory()){
+  let moduleDirectory = path.join(__dirname, '..', "./modules");
+  fs.readdirSync(moduleDirectory).forEach(function(model) {
+    let routesPath = path.join(moduleDirectory, model, 'routes.js');
+    let stats = fs.statSync(path.join(moduleDirectory, model));
+    if(!stats.isDirectory()) {
       return;
     }
-    if(fs.existsSync(routesPath)){
+    if(fs.existsSync(routesPath)) {
       require(routesPath)(router);
     }
-    var routesFolder = path.join(moduleDirectory, model, "routes");
-    if(fs.existsSync(routesFolder)){
-      fs.readdirSync(routesFolder).forEach(function(file){
-        var st = fs.statSync(path.join(routesFolder, file));
-        if(st.isFile()){
+    let routesFolder = path.join(moduleDirectory, model, "routes");
+    if(fs.existsSync(routesFolder)) {
+      fs.readdirSync(routesFolder).forEach(function(file) {
+        let st = fs.statSync(path.join(routesFolder, file));
+        if(st.isFile()) {
           require(path.join(routesFolder, file))(router);
         }
       });
@@ -34,6 +33,4 @@ module.exports = function(app){
   app.use((req, res)=>{
         res.redirect('/');
     });
-
-
 }

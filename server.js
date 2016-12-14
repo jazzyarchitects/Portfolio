@@ -9,16 +9,16 @@ let app = undefined;
 let numWorkers = require('os').cpus().length;
 let workerCount = 0;
 
-const server_port = config.server.port;
+const serverPort = config.server.port;
 
 exports.start = (isTest)=>{
-  if(isTest===undefined){
+  if(isTest===undefined) {
     config.db.uri = config.db.uri+"_test";
   }
   app = require('./framework/bootstrap')(config);
 
-  app.listen(server_port, function () {
-    console.log(chalk.red.bold("Server running at port: "+server_port));
+  app.listen(serverPort, function() {
+    console.log(chalk.red.bold("Server running at port: "+serverPort));
   });
   process.on('message', function(message) {
     if(message.command === 'shutdown' && message.from === 'master') {
@@ -40,8 +40,8 @@ process.on('unhandledException', (error, m)=> {
   console.log(chalk.red("Unhandled Exception at: Error "), m, chalk.red(" reason: "), chalk.red(error));
 })
 
-function createWorkers(){
-  if(workerCount<=0){
+function createWorkers() {
+  if(workerCount<=0) {
     return;
   }else{
     cluster.fork();
@@ -50,11 +50,10 @@ function createWorkers(){
   }
 }
 
-if(cluster.isMaster){
-
-  //Watcher for no downtime updatation
-  let watcher = chokidar.watch('.',{
-    ignored: ['tmp/*','public/*'],
+if(cluster.isMaster && (process.env.NODE_ENV==="production" || process.argv.indexOf("--force-cluster")!==-1)) {
+  // Watcher for no downtime updatation
+  chokidar.watch('.', {
+    ignored: ['tmp/*', 'public/*'],
     persistent: true,
     ignoreInitial: true,
     cwd: '.',
@@ -63,7 +62,7 @@ if(cluster.isMaster){
   }).on('all', restartWorkers);
 
 
-  if(numWorkers === 1){
+  if(numWorkers === 1) {
     numWorkers *= 2;
   }
 
@@ -72,12 +71,6 @@ if(cluster.isMaster){
 
   createWorkers();
 
-  // for(let i=0;i<numWorkers;i++){
-  //   setTimeout(()=>{
-  //     cluster.fork()
-  //   }, 2*1000);
-  //   // cluster.fork();
-  // }
   cluster.on('online', (worker)=>{
     console.log(chalk.magenta("Worker thread: "+worker.process.pid+" is online"));
   });
@@ -92,11 +85,11 @@ if(cluster.isMaster){
 let workerIds = [];
 let appRestarting = false;
 
-function restartWorkers(event, path){
-  if(appRestarting){
+function restartWorkers(event, path) {
+  if(appRestarting) {
     return;
   }
-  for(let wid in cluster.workers){
+  for(let wid in cluster.workers) {
     workerIds.push(wid)
   }
   appRestarting = true;
@@ -106,18 +99,18 @@ function restartWorkers(event, path){
   stopWorker();
 }
 
-function stopWorker(){
-  if(workerIds.length<=0){
+function stopWorker() {
+  if(workerIds.length<=0) {
     return;
   }
-  if(Object.keys(cluster.workers).length>0){
+  if(Object.keys(cluster.workers).length>0) {
     let wid = workerIds.pop();
     cluster.workers[wid].send({
       command: 'shutdown',
       from: 'master'
     });
     setTimeout(()=>{
-      if(cluster.workers[wid]){
+      if(cluster.workers[wid]) {
         cluster.workers[wid].process.kill('SIGKILL');
       }
     }, 20*1000);

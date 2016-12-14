@@ -1,9 +1,9 @@
 "use strict";
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-var modelSchema = new Schema({
+let modelSchema = new Schema({
   "name": {
     "type": String
   },
@@ -16,7 +16,7 @@ var modelSchema = new Schema({
   "message": {
     "type": String
   },
-  "contactedOn":{
+  "contactedOn": {
     type: Schema.Types.Date,
     default: Date.now
   }

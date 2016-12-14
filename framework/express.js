@@ -1,18 +1,17 @@
 'use strict';
 
-var express = require('express');
-var path = require('path');
-var fs = require('fs');
-var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var errorHandler = require('errorhandler');
-var compression = require('compression');
-var chalk = require('chalk');
+let express = require('express');
+let path = require('path');
+let fs = require('fs');
+let morgan = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let errorHandler = require('errorhandler');
+let compression = require('compression');
+let chalk = require('chalk');
 
 
-module.exports = function (app) {
-
+module.exports = function(app) {
     // Prettify HTML
     app.locals.pretty = true;
 
@@ -43,15 +42,15 @@ module.exports = function (app) {
     // Request body parsing middleware should be above methodOverride
     app.use(bodyParser());
 
-    app.use(function (req, res, next) {
+    app.use(function(req, res, next) {
         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
         res.header('Expires', '-1');
         res.header('Pragma', 'no-cache');
         next()
     });
     app.use(express.static(path.join(__dirname, '..', 'public')));
-    app.all('/',(req, res)=>{
-        fs.readFile(path.join(__dirname,'..','public','index.html'), function(err, buf){
+    app.all('/', (req, res)=>{
+        fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), function(err, buf) {
             if(err) {
                 return res.end("Some Error");
             }
@@ -60,7 +59,7 @@ module.exports = function (app) {
         });
     });
 
-    //Error handler
+    // Error handler
     if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
         app.use(errorHandler());
         app.get('/routes', (req, res, next)=>{
@@ -68,11 +67,11 @@ module.exports = function (app) {
         });
     }
 
-    var len = "App is now live!".length;
-    var col = process.stdout.columns?process.stdout.columns:40;
-    var starCount = (col-len)/2-1;
-    var str = "";
-    for(var i = 0;i<starCount;i++){
+    let len = "App is now live!".length;
+    let col = process.stdout.columns?process.stdout.columns:40;
+    let starCount = (col-len)/2-1;
+    let str = "";
+    for(let i = 0; i<starCount; i++) {
         str+="*";
     }
     console.log(chalk.bgBlue.white(str+"App is now live!"+str));

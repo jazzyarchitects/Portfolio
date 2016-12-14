@@ -1,15 +1,15 @@
 "use strict";
 
-var _ = require('lodash');
-var env = process.env.NODE_ENV || "development";
+let _ = require('lodash');
+let env = process.env.NODE_ENV || "development";
 
-var config;
+let config;
 
-if(env === "production"){
+if(env === "production") {
   config = require('./development');
-}else if(env === "staging"){
+}else if(env === "staging") {
   config = require('./staging');
-}else if(env === "test"){
+}else if(env === "test") {
   config = require("./test");
 }else{
   config = require("./development");

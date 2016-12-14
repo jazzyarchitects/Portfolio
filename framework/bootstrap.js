@@ -1,39 +1,38 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var express = require('express');
-var utils = require('./utils');
-var fs = require('fs');
-var path = require('path');
-var routes = require('./routes')
-var Log = require('jlogger');
+let mongoose = require('mongoose');
+let express = require('express');
+let utils = require('./utils');
+let fs = require('fs');
+let path = require('path');
+let routes = require('./routes')
+let Log = require('jlogger');
 
-var moduleDir = path.join(__dirname, '..', 'modules');
+let moduleDir = path.join(__dirname, '..', 'modules');
 
 global.requireFromModule = utils.requireFromModule;
 global.successJSON = utils.successJSON;
 global.errorJSON = utils.errorJSON;
 global.printRoutes = utils.printRoutes;
 
-var connection;
 console.log("Hello!!!");
 
-module.exports = function (config) {
+module.exports = function(config) {
     global.app = express();
     global.Log = Log;
     require('./express')(app);
 
-    app.set('jwtsecret',config.secret.jwt);
+    app.set('jwtsecret', config.secret.jwt);
 
     Log.setGlobalConfig({
         "tagBold": true
     });
 
     Log.hr();
-    //Connect to the database with given db url and options
+    // Connect to the database with given db url and options
     function connectDb() {
         mongoose.Promise = global.Promise;
-        mongoose.connect(config.db.uri, config.db.options, function(){
+        mongoose.connect(config.db.uri, config.db.options, function() {
             Log.i("Mongoose Connection", "MongoDB connected");
         });
     }
@@ -41,7 +40,7 @@ module.exports = function (config) {
     connectDb();
 
     function bootstrapModels() {
-      var dir = 'models';
+      let dir = 'models';
       utils.walk(moduleDir, dir);
   }
 
@@ -50,19 +49,18 @@ module.exports = function (config) {
   function bootstrapRoutes() {
     clearRoutes();
     routes(app);
-    if(process.env.NODE_ENV === 'development' || !process.env.NODE_ENV){
+    if(process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
         processRoutes();
     }
 }
 
-function clearRoutes(){
-    var routesPath = path.join(".", "tmp", "routes");
-    if(!fs.existsSync(routesPath)){
+function clearRoutes() {
+    let routesPath = path.join(".", "tmp", "routes");
+    if(!fs.existsSync(routesPath)) {
         return;
     }
-    var routesPath = path.join(".", "tmp", "routes");
     fs.readdirSync(routesPath).forEach((file, i)=>{
-        if(fs.existsSync(path.join(routesPath, file))){
+        if(fs.existsSync(path.join(routesPath, file))) {
             fs.unlinkSync(path.join(routesPath, file));
         }
     });
@@ -71,17 +69,17 @@ function clearRoutes(){
 bootstrapRoutes();
 
 function processRoutes(dir) {
-    var dirName = dir || './tmp/routes/';
-    var string = "";
-    fs.readdir(dirName, function (err, fileNames) {
+    let dirName = dir || './tmp/routes/';
+    let string = "";
+    fs.readdir(dirName, function(err, fileNames) {
         if (err) {
             fs.mkdirSync(dirName);
             return processRoutes(dir);
             Log.e("ProcessRoutes", "Error in storing routes");
         } else {
             Log.w("ProcessRoutes", "FileNames: " + JSON.stringify(fileNames));
-            fileNames.forEach(function (fileName) {
-                fs.readFile(dirName + fileName, 'utf-8', function (err, content) {
+            fileNames.forEach(function(fileName) {
+                fs.readFile(dirName + fileName, 'utf-8', function(err, content) {
                     if (fileName == fileNames[fileNames.length - 1]) {
                         string += '{"' + fileName + '":' + content + '}';
                         fs.writeFileSync('./tmp/routesRaw.json', '{"routes":[' + string + ']}', 'utf-8');
@@ -96,16 +94,16 @@ function processRoutes(dir) {
 }
 
 function extractRoutes() {
-    fs.readFile('./tmp/routesRaw.json', function (err, string) {
+    fs.readFile('./tmp/routesRaw.json', function(err, string) {
         let file;
         try{
             file = JSON.parse(string);
-        }catch(ex){
+        }catch(ex) {
             return;
         }
-        var content = file.routes;
+        let content = file.routes;
 
-        var html = "<!DOCTYPE html><html lang=\"en\"><head>" +
+        let html = "<!DOCTYPE html><html lang=\"en\"><head>" +
         "<meta charset=\"UTF-8\">" +
         "<title>Routes</title>" +
         "</head>" +
@@ -117,18 +115,18 @@ function extractRoutes() {
         "<th>Methods</th>" +
         "</tr>";
 
-        content.forEach(function (jsonObject) {
-            var key = Object.keys(jsonObject)[0];
-            var innerArray = jsonObject[key];
-            html += '<tr><td colspan="3">&nbsp;<hr /></td></tr><tr style="border: #000000 2px solid;"><td>/' + key.replace('Routes.json','').replace("-","/") + '</td></tr>';
-            innerArray.forEach(function (jObj) {
+        content.forEach(function(jsonObject) {
+            let key = Object.keys(jsonObject)[0];
+            let innerArray = jsonObject[key];
+            html += '<tr><td colspan="3">&nbsp;<hr /></td></tr><tr style="border: #000000 2px solid;"><td>/' + key.replace('Routes.json', '').replace("-", "/") + '</td></tr>';
+            innerArray.forEach(function(jObj) {
                 if (jObj.route) {
-                    var route = jObj.route;
-                    var path = route.path;
-                    var stack = route.stack;
+                    let route = jObj.route;
+                    let path = route.path;
+                    let stack = route.stack;
                     html+='<tr><td></td><td>'+path+'</td>';
-                    var methods = [];
-                    stack.forEach(function (stackObject) {
+                    let methods = [];
+                    stack.forEach(function(stackObject) {
                         if (stackObject.name == "<anonymous>") {
                             methods.push(stackObject.method);
                         }
@@ -139,8 +137,7 @@ function extractRoutes() {
         });
 
         html += '</table></div></body></html>';
-        fs.writeFileSync('./tmp/routes.html',html);
-
+        fs.writeFileSync('./tmp/routes.html', html);
     });
 }
 
