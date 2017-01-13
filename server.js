@@ -11,13 +11,18 @@ let workerCount = 0;
 
 const serverPort = config.server.port;
 
+let ipAddr = 'localhost';
+if(process.env.NODE_ENV==="production"){
+  ipAddr = '172.31.32.223';
+}
+
 exports.start = (isTest)=>{
   if(isTest===undefined) {
     config.db.uri = config.db.uri+"_test";
   }
   app = require('./framework/bootstrap')(config);
 
-  app.listen(serverPort, function() {
+  app.listen(serverPort, ipAddr, function() {
     console.log(chalk.red.bold("Server running at port: "+serverPort));
   });
   process.on('message', function(message) {
