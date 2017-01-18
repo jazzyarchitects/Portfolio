@@ -2,6 +2,8 @@
 
 const config = require('./config');
 const chalk = require('chalk');
+const http = require('http');
+const path = require('path');
 const cluster = require('cluster');
 const chokidar = require('chokidar');
 
@@ -22,9 +24,15 @@ exports.start = (isTest)=>{
   }
   app = require('./framework/bootstrap')(config);
 
-  app.listen(serverPort, ipAddr, function() {
+  let server = http.Server(app);
+  require(path.join(__dirname, "soocketio"))(server);
+
+  server.listen(serverPort, ipAddr, function() {
     console.log(chalk.red.bold("Server running at port: "+serverPort));
   });
+
+
+
   process.on('message', function(message) {
     if(message.command === 'shutdown' && message.from === 'master') {
       process.exit(0);

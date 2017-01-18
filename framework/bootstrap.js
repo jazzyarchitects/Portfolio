@@ -1,12 +1,17 @@
 'use strict';
 
-let mongoose = require('mongoose');
-let express = require('express');
-let utils = require('./utils');
-let fs = require('fs');
-let path = require('path');
+const mongoose = require('mongoose');
+const express = require('express');
+const utils = require('./utils');
+const fs = require('fs');
+const path = require('path');
 let routes = require('./routes')
-let Log = require('jlogger');
+const Log = require('jlogger');
+const redis = require('redis');
+let redisClient = undefined;
+
+const admin = require('firebase-admin');
+const fireBaseConfig = require(path.join(__dirname, '..', 'config', 'firebase-admin'));
 
 let moduleDir = path.join(__dirname, '..', 'modules');
 
@@ -35,6 +40,8 @@ module.exports = function(config) {
         mongoose.connect(config.db.uri, config.db.options, function() {
             Log.i("Mongoose Connection", "MongoDB connected");
         });
+        redisClient = redis.createClient();
+        global.redisClient = redisClient;
     }
 
     connectDb();
@@ -63,6 +70,13 @@ function clearRoutes() {
         if(fs.existsSync(path.join(routesPath, file))) {
             fs.unlinkSync(path.join(routesPath, file));
         }
+    });
+}
+
+function setupFirebase(){
+    admin.initializeApp({
+        credential: admin.credential.cert(fireBaseConfig),
+        database: "https://portfolio-1480561252506.firebaseio.com"
     });
 }
 

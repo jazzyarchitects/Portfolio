@@ -20,5 +20,8 @@
      },
      secret: {
         jwt: "F398M*GwK6q8FfEEO%Kx"
+     },
+     firebase: {
+        apiKey: "AIzaSyD1MdMrjDXu5yrg43rmSDW1VEfQ_dJhgF8"
      }
  };
