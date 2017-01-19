@@ -25,7 +25,7 @@ exports.start = (isTest)=>{
   app = require('./framework/bootstrap')(config);
 
   let server = http.Server(app);
-  require(path.join(__dirname, "soocketio"))(server);
+  require(path.join(__dirname, "socketio"))(server);
 
   server.listen(serverPort, ipAddr, function() {
     console.log(chalk.red.bold("Server running at port: "+serverPort));

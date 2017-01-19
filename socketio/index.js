@@ -40,7 +40,6 @@ function generateRandomId(length){
   length = length || 32;
   let date = (new Date()).getTime();    //epoch time of length 13
   date = date.toString();
-  let str = "";
   let str = date;
   for(let i=0;i<(length-date.length);i++){
     let a = Math.random() * allowed.length;
