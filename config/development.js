@@ -22,6 +22,8 @@
         jwt: "F398M*GwK6q8FfEEO%Kx"
      },
      firebase: {
-        apiKey: "AIzaSyD1MdMrjDXu5yrg43rmSDW1VEfQ_dJhgF8"
+        apiKey: "AAAAWp7yuPM:APA91bEA0iRizU_sH_NxvwiZ8Fo0wVUxBm34WJuDYpkb_6AyeHlIPubHl33_csI8vwZruIz7eR6p5j9TjAyJ-SNdjb2ZTcFOvyOGRY55zhlR6WjLARTajIUuezSMFOnzhkQ99PHni4zz",
+        senderID: "389213763827",
+        legacyServerKey: "AIzaSyBjCNYzs5hWVrUNRF7ipbeUjBQ1QQeqyT4"
      }
  };
