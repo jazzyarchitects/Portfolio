@@ -2256,11 +2256,13 @@ textarea.materialize-textarea {
 .portfolio-item{
   margin: auto;
   padding:10px;
+  margin-top: 15px;
   background: #fff;
 }
 
 #portfolio .card{
   transition-duration: 250ms;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.20);
 }
 
 #portfolio .card:hover{
@@ -2322,4 +2324,9 @@ textarea.materialize-textarea {
   .project-description .btn{
     margin-top: 5px;
   }
+}
+
+.project-description ul li{
+  list-style: disc;
+  margin-left: 30px;
 }

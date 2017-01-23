@@ -26,6 +26,7 @@
 **/
 
 jQuery(function($) {
+  loadGithubData();
 	/* ----------------------------------------------------------- */
 	/*  1. Mobile MENU
 	/* ----------------------------------------------------------- */
@@ -306,3 +307,27 @@ jQuery(function($) {
     });
   });
 });
+
+
+function loadGithubData(){
+  var URL = "https://api.github.com/users/jazzyarchitects/repos";
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     // document.getElementById("demo").innerHTML = this.responseText;
+     // console.log(this.responseText);
+     var response = JSON.parse(this.responseText);
+     var projectList = [];
+     for(let i=0;i<response.length;i++){
+        projectList.push({
+          name: response[i].name,
+          url: response[i].html_url,
+          description: response[i].description
+        });
+     }
+     // console.log(projectList);
+    }
+  };
+  xhttp.open("GET", URL, true);
+  xhttp.send();
+}
