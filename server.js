@@ -2,7 +2,6 @@
 
 const config = require('./config');
 const chalk = require('chalk');
-const http = require('http');
 const path = require('path');
 const cluster = require('cluster');
 const chokidar = require('chokidar');
@@ -13,10 +12,10 @@ let workerCount = 0;
 
 const serverPort = config.server.port;
 
-let ipAddr = 'localhost';
-if(process.env.NODE_ENV==="production"){
-  ipAddr = '172.31.32.223';
-}
+// let ipAddr = 'localhost';
+// if(process.env.NODE_ENV==="production"){
+//   ipAddr = '172.31.32.223';
+// }
 
 exports.start = (isTest)=>{
   if(isTest===undefined) {
@@ -24,10 +23,10 @@ exports.start = (isTest)=>{
   }
   app = require('./framework/bootstrap')(config);
 
-  let server = http.Server(app);
-  require(path.join(__dirname, "socketio"))(server);
+  // let server = http.Server(app);
+  // require(path.join(__dirname, "socketio"))(server);
 
-  server.listen(serverPort, ipAddr, function() {
+  app.listen(serverPort, function() {
     console.log(chalk.red.bold("Server running at port: "+serverPort));
   });
 

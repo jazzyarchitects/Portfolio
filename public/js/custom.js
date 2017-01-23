@@ -38,21 +38,28 @@ jQuery(function($) {
 
 	let owl = $("#owl-carousel");
     owl.owlCarousel({
-        items: 2, // 4 items above 1024px browser width
-        itemsDesktop: [1024, 2], // 3 items between 1024px and 901px
-        itemsDesktopSmall: [900, 2], // betweem 900px and 601px
-        itemsTablet: [600, 1], // 1 items between 600 and 0
-        itemsMobile: 1 // itemsMobile disabled - inherit from itemsTablet option
+        loop: true,
+        margin: 10,
+        responsive:{
+          0:{
+            items: 1
+          },
+          600:{
+            items: 2
+          },
+          1000: {
+            items: 2
+          }
+        }
     });
-    // Slide Navigation
+     // Slide Navigation
     jQuery(".next").click(function() {
-        owl.trigger('owl.next');
+        owl.trigger('next.owl.carousel');
     });
 
     jQuery(".prev").click(function() {
-        owl.trigger('owl.prev');
+        owl.trigger('prev.owl.carousel');
     });
-
 
     /* ----------------------------------------------------------- */
 	/*  3. EDUCATION SLIDER (Owl Carousel)
@@ -60,20 +67,28 @@ jQuery(function($) {
 
 	let owl1 = $("#owl-carousel1");
 	owl1.owlCarousel({
-	    items: 3, // 4 items above 1024px browser width
-	    itemsDesktop: [1024, 3], // 3 items between 1024px and 901px
-	    itemsDesktopSmall: [900, 2], // betweem 900px and 601px
-	    itemsTablet: [600, 1], // 1 items between 600 and 0
-	    itemsMobile: 1 // itemsMobile disabled - inherit from itemsTablet option
+    loop: true,
+        margin: 10,
+        responsive:{
+          0:{
+            items: 1
+          },
+          600:{
+            items: 2
+          },
+          1000: {
+            items: 3
+          }
+        }
 	});
-	// Slide Navigation
-	jQuery(".next1").click(function() {
-	    owl1.trigger('owl.next');
-	});
+	 // Slide Navigation
+    jQuery(".next1").click(function() {
+        owl1.trigger('next.owl.carousel');
+    });
 
-	jQuery(".prev1").click(function() {
-	    owl1.trigger('owl.prev');
-	});
+    jQuery(".prev1").click(function() {
+        owl1.trigger('prev.owl.carousel');
+    });
 
     /* ----------------------------------------------------------- */
 	/*  4. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
@@ -118,22 +133,29 @@ jQuery(function($) {
 
 	let owl2 = $("#owl-carousel2");
     owl2.owlCarousel({
-        items: 2, // 4 items above 1024px browser width
-        itemsDesktop: [1024, 2], // 3 items between 1024px and 901px
-        itemsDesktopSmall: [900, 2], // betweem 900px and 601px
-        itemsTablet: [600, 1], // 1 items between 600 and 0
-        itemsMobile: 1 // itemsMobile disabled - inherit from itemsTablet option
+      loop: false,
+        margin: 10,
+        responsive:{
+          0:{
+            items: 1
+          },
+          600:{
+            items: 2
+          },
+          1000: {
+            items: 2
+          }
+        }
     });
 
-    // Slide Navigation
+   // Slide Navigation
     jQuery(".next2").click(function() {
-        owl2.trigger('owl.next');
+        owl2.trigger('next.owl.carousel');
     });
 
     jQuery(".prev2").click(function() {
-        owl2.trigger('owl.prev');
+        owl2.trigger('prev.owl.carousel');
     });
-
 
   /* ----------------------------------------------------------- */
   /*  6 b. SOCIAL SLIDER (Owl Carousel)
@@ -141,20 +163,28 @@ jQuery(function($) {
 
   let owl3 = $("#owl-carousel3");
     owl3.owlCarousel({
-        items: 6, // 4 items above 1024px browser width
-        itemsDesktop: [1024, 6], // 3 items between 1024px and 901px
-        itemsDesktopSmall: [900, 4], // betweem 900px and 601px
-        itemsTablet: [600, 2], // 1 items between 600 and 0
-        itemsMobile: 2 // itemsMobile disabled - inherit from itemsTablet option
+      loop: true,
+        margin: 10,
+        responsive:{
+          0:{
+            items: 2
+          },
+          600:{
+            items: 4
+          },
+          1000: {
+            items: 6
+          }
+        }
     });
 
     // Slide Navigation
     jQuery(".next3").click(function() {
-        owl3.trigger('owl.next');
+        owl3.trigger('next.owl.carousel');
     });
 
     jQuery(".prev3").click(function() {
-        owl3.trigger('owl.prev');
+        owl3.trigger('prev.owl.carousel');
     });
 
 
