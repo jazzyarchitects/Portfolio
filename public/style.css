@@ -306,6 +306,10 @@ nav .brand-logo img {
   text-transform: uppercase;
 }
 
+.title-small{
+  font-size: 32px;
+}
+
 
 .skill-progress-bar{
   display: inline;
@@ -2404,4 +2408,8 @@ textarea.materialize-textarea {
   right:5%;
   margin-top: 50px;
   position: absolute;
+}
+
+.workshop-slider-area{
+  font-size: initial;
 }
