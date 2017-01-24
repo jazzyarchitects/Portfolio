@@ -2351,11 +2351,14 @@ textarea.materialize-textarea {
     border: 1px solid #5aad35;
     padding: 3px 10px;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 20px;
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
     font-weight: 600;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
   }
 
 .repository-button:hover{
@@ -2364,7 +2367,7 @@ textarea.materialize-textarea {
 }
 
 .github-content {
-  min-height: 150px;
+  min-height: 180px;
   font-size: 14px;
   background-color: #fff;
   border-radius: 2px;

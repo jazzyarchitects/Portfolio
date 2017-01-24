@@ -25,6 +25,13 @@
 
   **/
 
+var monthNames = [
+  "Jan", "Feb", "Mar",
+  "Apr", "May", "Jun", "Jul",
+  "Aug", "Sep", "Oct",
+  "Nov", "Dec"
+];
+
   var usedRepositories = [
   "https://github.com/code-lucidal58/Haptiq",
   "https://github.com/jazzyarchitects/Haptiq-Extension",
@@ -343,7 +350,9 @@ function loadGithubData(){
       projectList.push({
         name: response[i].name,
         url: response[i].html_url,
-        description: response[i].description
+        description: response[i].description,
+        language: response[i].language,
+        updatedAt: new Date(response[i].created_at)
       });
     }
     let rootElement = document.getElementById("owl-carousel4");
@@ -395,6 +404,9 @@ function getRepositoryTemplate(repo){
   if(repo.description!==null && repo.description!==undefined){
     string += description;
   }
+
+  // string += `<br /><a class="chip">`+repo.language+`</a>`;
+  string += `<br /><b>Created on:</b> `+repo.updatedAt.getDate()+`-`+monthNames[repo.updatedAt.getMonth()]+`-`+repo.updatedAt.getFullYear()+`</a>`;
 
   string += `<br /><a href="`+repo.url+`" class="repository-button" target="_blank">Visit Repository</a>`;
 
