@@ -30,6 +30,10 @@ module.exports = function(app) {
 
   app.use('/api', router);
 
+  app.all('/cv', function(req, res){
+    res.redirect('https://drive.google.com/file/d/0B1cWZGp8N63McEpWQXNDSlhYNFE/view?usp=sharing');
+  });
+
   app.use((req, res)=>{
         res.redirect('/');
     });
