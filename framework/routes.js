@@ -34,6 +34,10 @@ module.exports = function(app) {
     res.redirect('https://drive.google.com/file/d/0B1cWZGp8N63McEpWQXNDSlhYNFE/view?usp=sharing');
   });
 
+  app.all('/medical-assistant/privacy-policy', function(req, res){
+    res.sendFile(path.join(__dirname, '..', 'public', 'privacypolicy.htm'));
+  });
+
   app.use((req, res)=>{
         res.redirect('/');
     });
