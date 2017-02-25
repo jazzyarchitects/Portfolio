@@ -2,6 +2,7 @@
 
 const config = require('./config');
 const chalk = require('chalk');
+const http = require('http');
 const path = require('path');
 const cluster = require('cluster');
 const chokidar = require('chokidar');
@@ -25,8 +26,10 @@ exports.start = (isTest)=>{
 
   // let server = http.Server(app);
   // require(path.join(__dirname, "socketio"))(server);
+  const server = http.createServer(app);
+  require(path.join(__dirname, 'framework', 'socket.io'))(server);
 
-  app.listen(serverPort, function() {
+  server.listen(serverPort, function() {
     console.log(chalk.red.bold("Server running at port: "+serverPort));
   });
 
