@@ -355,12 +355,12 @@ function loadGithubData(){
         updatedAt: new Date(response[i].created_at)
       });
     }
-    
+
     projectList.sort(function(a,b){
       var aDate = a.updatedAt;
       var bDate = b.updatedAt;
-      if(aDate < bDate) return -1;
-      if(aDate > bDate) return 1;
+      if(aDate > bDate) return -1;
+      if(aDate < bDate) return 1;
       return 0;
     });
 
