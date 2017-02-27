@@ -8,7 +8,7 @@ module.exports = (server)=>{
     // console.log("Socket connected");
     socket.on('notification', (data)=>{
       console.log("Socket:"+JSON.stringify(data));
-      socket.broadcast.emit('notification', data);
+       socket.broadcast.emit('notification', data);
     });
   });
 }

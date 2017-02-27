@@ -355,6 +355,15 @@ function loadGithubData(){
         updatedAt: new Date(response[i].created_at)
       });
     }
+    
+    projectList.sort(function(a,b){
+      var aDate = a.updatedAt;
+      var bDate = b.updatedAt;
+      if(aDate < bDate) return -1;
+      if(aDate > bDate) return 1;
+      return 0;
+    });
+
     let rootElement = document.getElementById("owl-carousel4");
     for(let i = 0;i<projectList.length;i++){
       rootElement.appendChild(getRepositoryTemplate(projectList[i]));
