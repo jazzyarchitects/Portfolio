@@ -51,16 +51,19 @@ module.exports = (server)=>{
 
   socket.on('deletePairing', (data)=>{
     if(!data.fcm && data.chromeId){
-      if(io.sockets.adapter.sids[socket.id][data.chromeId]){
-        io.in(data.chromeId).emit('deletePairing', {});
-      }else{
-        offlinePairingDeleted.push(chromeId);
-      }
+
+      io.in(data.chromeId).emit('deletePairing', {});
+      offlinePairingDeleted.push(data.chromeId);
     }else if(data.fcm && !data.chromeId){
       firebase.sendMessage(data.fcm, {
         pairing: "deletePairing"
       });
     }
+  });
+
+  socket.on('deletePairing-ack', (data)=>{
+    let index = offlinePairingDeleted.indexOf(data.chromeId);
+    offlinePairingDeleted.splice(index,1);
   });
 
   socket.on("pairing-successful", (data)=>{
