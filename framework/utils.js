@@ -7,19 +7,24 @@ let walk = function(moduleDirectory, walkDirectory, callback) {
     if (!callback) {
         callback = requireFromModule;
     }
+    if(!fs.existsSync(moduleDirectory)){
+        return;
+    }
     fs.readdirSync(moduleDirectory).forEach(function(dir) {
         let dirPath = path.join(moduleDirectory, dir);
         let dirStat = fs.statSync(dirPath);
         if (dirStat.isDirectory()) {
             let walkPath = path.join(dirPath, walkDirectory);
-            fs.readdirSync(walkPath).forEach(function(file) {
-                let filePath = path.join(walkPath, file);
-                let fileStat = fs.statSync(filePath);
-                if (fileStat.isFile() && /(.*)\.(js)$/.test(file)) {
-                    let modulePath = path.join(dirPath, walkDirectory, file);
-                    callback(modulePath);
-                }
-            });
+            if(fs.existsSync(walkPath)){
+                fs.readdirSync(walkPath).forEach(function(file) {
+                    let filePath = path.join(walkPath, file);
+                    let fileStat = fs.statSync(filePath);
+                    if (fileStat.isFile() && /(.*)\.(js)$/.test(file)) {
+                        let modulePath = path.join(dirPath, walkDirectory, file);
+                        callback(modulePath);
+                    }
+                });
+            }
         }
     });
 };
