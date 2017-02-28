@@ -28,7 +28,9 @@ let sendMessage = function(recipients, data, __cb){
 
     }
   }, (err, response, body)=>{
-    __cb(err, response, body);
+    if(__cb){
+      __cb(err, response, body);
+    }
     // Log.i("Firebase: "+)o
     // console.log(response.statusCode);
     // console.log(body);

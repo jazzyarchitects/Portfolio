@@ -12,7 +12,7 @@ router.post('/linuxStartup', function(req, res){
     res.send("No fcm id provided");
     return;
   }
-  fcm.sendMessage(req.body.to, req.body.startTime, function(err, response, body){
+  fcm.sendMessage(req.body.to, {startupTime: req.body.startTime}, function(err, response, body){
     res.send(body);
   });
 });
