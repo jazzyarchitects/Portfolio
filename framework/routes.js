@@ -11,7 +11,7 @@ module.exports = function(app) {
   fs.readdirSync(moduleDirectory).forEach(function(model) {
     if(model !== "apps"){
 
-      
+
       let routesPath = path.join(moduleDirectory, model, 'routes.js');
       let stats = fs.statSync(path.join(moduleDirectory, model));
       if(!stats.isDirectory()) {
@@ -33,6 +33,8 @@ module.exports = function(app) {
   });
 
   app.use('/api', router);
+
+  require(path.join(__dirname, '..', 'modules', 'apps', 'routes'))(app);
 
   app.all('/cv', function(req, res){
     res.redirect('https://drive.google.com/file/d/0B1cWZGp8N63McEpWQXNDSlhYNFE/view?usp=sharing');
