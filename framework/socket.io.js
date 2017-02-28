@@ -1,6 +1,9 @@
 "use strict";
 
+let offlinePairingDeleted = [];
+
 module.exports = (server)=>{
+  const firebase = require('./firebase');
   let io = require('socket.io')(server);
   io.set('transports', ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling', 'polling']);
   io.set('origins', '*:*');
@@ -14,6 +17,9 @@ module.exports = (server)=>{
       }else{
       // data.id stores the id of chrome-extension which was assigned on first connect
       socket.join(data.id);
+      if(offlinePairingDeleted.indexOf(data.id)!==-1){
+        io.in(data.id).emit('deletePairing', {});
+      }
     }
   });
 
@@ -37,9 +43,28 @@ module.exports = (server)=>{
     io.in(data.chromeId).emit('pairing', {
       chromeId: data.chromeId,
       phoneId: data.phoneId,
-      fcm: data.fcmId
+      fcm: data.fcmId,
+      secretKey: data.secretKey
     });
 
+  });
+
+  socket.on('deletePairing', (data)=>{
+    if(!data.fcm && data.chromeId){
+      if(io.sockets.adapter.sids[socket.id][data.chromeId]){
+        io.in(data.chromeId).emit('deletePairing', {});
+      }else{
+        offlinePairingDeleted.push(chromeId);
+      }
+    }else if(data.fcm && !data.chromeId){
+      firebase.sendMessage(data.fcm, {
+        pairing: "deletePairing"
+      });
+    }
+  });
+
+  socket.on("pairing-successful", (data)=>{
+    io.in(data.phoneId).emit('pairing-successful', data);
   });
 
   socket.on('notification', (data)=>{
