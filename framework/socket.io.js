@@ -2,6 +2,9 @@
 
 let offlinePairingDeleted = [];
 
+let chromeSocketIdMap = {};
+let chromeFcmMap = {};
+
 module.exports = (server)=>{
   const firebase = require('./firebase');
   let io = require('socket.io')(server);
@@ -21,6 +24,7 @@ module.exports = (server)=>{
       if(offlinePairingDeleted.indexOf(data.id)!==-1){
         io.in(data.id).emit('deletePairing', {});
       }
+      chromeSocketIdMap[socket.id] = data.id;
     }
   });
 
@@ -79,6 +83,31 @@ module.exports = (server)=>{
   socket.on('notification', (data)=>{
     console.log("notification:"+JSON.stringify(data));
     io.in(data.chromeId).emit('notification', data);
+  });
+
+  socket.on('chrome-stopped', (data)=>{
+    console.log("chrome-stopped: "+JSON.stringify(data));
+    firebase.sendMessage(data.fcm, {event: "chrome-stopped"});
+    if(chromeSocketIdMap[socket.id]){
+      chromeFcmMap[chromeSocketIdMap[socket.id]] = undefined;
+      chromeSocketIdMap[socket.id] = undefined;
+    }
+  });
+
+  socket.on('disconnect', (data)=>{
+    console.log("Disconnect: "+JSON.stringify(data));
+    if(chromeSocketIdMap[socket.id]){
+      firebase.sendMessage(chromeFcmMap[chromeSocketIdMap[socket.id]], {event: "chrome-stopped"});
+      chromeFcmMap[chromeSocketIdMap[socket.id]] = undefined;
+      chromeSocketIdMap[socket.id] = undefined;
+    }
+  });
+
+  socket.on('fcm-map', (data)=>{
+    console.log("FCM Map: "+JSON.stringify(data));
+    if(data.chromeId){
+      chromeFcmMap[data.chromeId] = data.fcm;
+    }
   });
 
 });
