@@ -39,9 +39,21 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^3.12.1",
+    "eslint": "^3.16.1",
     "eslint-config-google": "^0.7.1",
-    "request": "^2.67.0"
+    "grunt": "^1.0.1",
+    "grunt-contrib-compress": "^1.4.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-cssmin": "^2.0.0",
+    "grunt-contrib-eslint": "0.0.5",
+    "grunt-contrib-htmlmin": "^2.2.0",
+    "grunt-contrib-uglify": "^2.2.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "gruntify-eslint": "^3.1.0",
+    "jit-grunt": "^0.10.0",
+    "request": "^2.67.0",
+    "time-grunt": "^1.4.0"
   },
   "jgenConfig": {
     "database": "Portfolio"
