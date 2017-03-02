@@ -15,6 +15,13 @@ module.exports = function(grunt){
         silent: true
       },
       src: ['./**/*.js', '!./node_modules/**/*.js', '!./public/**/*.min.js']
+    },
+    uglify: {
+      development:{
+        files: {
+        './public/dest/script.min.js': ['./public/js/*.js']
+        }
+      }
     }
   });
 

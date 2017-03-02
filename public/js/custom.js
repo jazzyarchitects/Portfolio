@@ -55,7 +55,7 @@ var monthNames = [
 	/*  2. Experience SLider(Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	let owl = $("#owl-carousel");
+	var owl = $("#owl-carousel");
   owl.owlCarousel({
     loop: true,
     margin: 10,
@@ -84,7 +84,7 @@ var monthNames = [
 	/*  3. EDUCATION SLIDER (Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	let owl1 = $("#owl-carousel1");
+	var owl1 = $("#owl-carousel1");
 	owl1.owlCarousel({
     loop: true,
     margin: 10,
@@ -123,7 +123,7 @@ var monthNames = [
     $('#portfolio-popup').animate({
      "opacity": 1
    }, 500);
-    let portfolio_detailscontent = $(this).parent(".mix").find(".portfolio-detail").html();
+    var portfolio_detailscontent = $(this).parent(".mix").find(".portfolio-detail").html();
     $(".portfolio-popup-inner").html(portfolio_detailscontent);
   });
 
@@ -157,7 +157,7 @@ var monthNames = [
 	/*  6. TESTIMONIAL SLIDER (Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	let owl2 = $("#owl-carousel2");
+	var owl2 = $("#owl-carousel2");
   owl2.owlCarousel({
     loop: false,
     margin: 10,
@@ -187,7 +187,7 @@ var monthNames = [
   /*  6 b. SOCIAL SLIDER (Owl Carousel)
   /* ----------------------------------------------------------- */
 
-  let owl3 = $("#owl-carousel3");
+  var owl3 = $("#owl-carousel3");
   owl3.owlCarousel({
     loop: true,
     margin: 10,
@@ -221,14 +221,14 @@ var monthNames = [
 	// MENU SCROLLING WITH ACTIVE ITEM SELECTED
 
 	// Cache selectors
-	let lastId,
+	var lastId,
 	topMenu = $(".menu-scroll"),
 	topMenuHeight = topMenu.outerHeight()+13,
 	// All list items
 	menuItems = topMenu.find('a[href^=\\#]'),
 	// Anchors corresponding to menu items
 	scrollItems = menuItems.map(function() {
-   let item = $($(this).attr("href"));
+   var item = $($(this).attr("href"));
    if (item.length) {
      return item;
    }
@@ -237,7 +237,7 @@ var monthNames = [
 	// Bind click handler to menu items
 	// so we can get a fancy scroll animation
 	menuItems.click(function(e) {
-   let href = $(this).attr("href"),
+   var href = $(this).attr("href"),
    offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+15;
    jQuery('html, body').stop().animate({
      scrollTop: offsetTop
@@ -248,16 +248,16 @@ var monthNames = [
 	// Bind to scroll
 	jQuery(window).scroll(function() {
 	   // Get container scroll position
-	   let fromTop = $(this).scrollTop()+topMenuHeight;
+	   var fromTop = $(this).scrollTop()+topMenuHeight;
 
 	   // Get id of current scroll item
-	   let cur = scrollItems.map(function() {
+	   var cur = scrollItems.map(function() {
       if ($(this).offset().top < fromTop)
         return this;
     });
 	   // Get the id of the current element
 	   cur = cur[cur.length-1];
-	   let id = cur && cur.length ? cur[0].id : "";
+	   var id = cur && cur.length ? cur[0].id : "";
 
 	   if (lastId !== id) {
       lastId = id;
@@ -317,13 +317,13 @@ var monthNames = [
 
   $("#contact_me_send_message").click(function(e) {
     e.preventDefault();
-    let data = {
+    var data = {
       name: $("input[name='contactName']").val(),
       email: $("input[name='contactEmail']").val(),
       subject: $("input[name='contactSubject']").val(),
       message: $("textarea[name='contactMessage']").val()
     }
-    let url = window.location.protocol+"//"+window.location.host+"/api/contact";
+    var url = window.location.protocol+"//"+window.location.host+"/api/contact";
     $.post(url, data, function(response) {
       if(response.success) {
         $("#contact_me_send_message").html('Thank You. I will revert back soon. :)')
@@ -343,7 +343,7 @@ function loadGithubData(){
      // console.log(this.responseText);
      var response = JSON.parse(this.responseText);
      var projectList = [];
-     for(let i=0;i<response.length;i++){
+     for(var i=0;i<response.length;i++){
       if(usedRepositories.indexOf(response[i].html_url)!==-1){
         continue;
       }
@@ -364,12 +364,12 @@ function loadGithubData(){
       return 0;
     });
 
-    let rootElement = document.getElementById("owl-carousel4");
-    for(let i = 0;i<projectList.length;i++){
+    var rootElement = document.getElementById("owl-carousel4");
+    for(var i = 0;i<projectList.length;i++){
       rootElement.appendChild(getRepositoryTemplate(projectList[i]));
     }
     // console.log(projectList);
-    let owl4 = $("#owl-carousel4");
+    var owl4 = $("#owl-carousel4");
     owl4.owlCarousel({
       loop: true,
       margin: 10,
@@ -402,24 +402,24 @@ xhttp.send();
 }
 
 function getRepositoryTemplate(repo){
-  let string = `<div class="github-content">`;
-  let heading = `<h3 style="width:100%;">`+repo.name+`</h3>`;
+  var string = '<div class="github-content">';
+  var heading = '<h3 style="width:100%;">'+repo.name+'</h3>';
   if(repo.name.length>18){
-    heading = `<marquee speed="10">`+repo.name+`</marquee>`;
+    heading = '<marquee speed="10">'+repo.name+'</marquee>';
   }
   string += heading;
 
-  let description =  `<span>`+repo.description+`</span>`;
+  var description =  '<span>'+repo.description+'</span>';
   if(repo.description!==null && repo.description!==undefined){
     string += description;
   }
 
-  // string += `<br /><a class="chip">`+repo.language+`</a>`;
-  string += `<br /><b>Created on:</b> `+repo.updatedAt.getDate()+`-`+monthNames[repo.updatedAt.getMonth()]+`-`+repo.updatedAt.getFullYear()+`</a>`;
+  // string += '<br /><a class="chip">'+repo.language+'</a>';
+  string += '<br /><b>Created on:</b> '+repo.updatedAt.getDate()+'-'+monthNames[repo.updatedAt.getMonth()]+'-'+repo.updatedAt.getFullYear()+'</a>';
 
-  string += `<br /><a href="`+repo.url+`" class="repository-button" target="_blank">Visit Repository</a>`;
+  string += '<br /><a href="'+repo.url+'" class="repository-button" target="_blank">Visit Repository</a>';
 
-  string += `</div>`;
+  string += '</div>';
 
   var node = document.createElement('div');
   node.className = "col s12 item";
