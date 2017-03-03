@@ -44,14 +44,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, '..', 'public', 'privacypolicy.htm'));
   });
 
-  app.get('/dest/gzip/:folder/:file', function(req, res){
-    fs.readFile(path.join(__dirname, '..', 'public', 'dest', 'gzip', req.params.folder, req.params.file), function(err, content){
-      res.set("Content-encoding", 'gzip');
-      // res.set("Content-")
-      res.send(content.toString());
-    });
-  });
-
   app.use((req, res)=>{
     res.redirect('/');
   });

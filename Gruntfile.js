@@ -55,6 +55,18 @@ module.exports = function(grunt){
         }
       }
     },
+
+    htmlmin:{
+      build: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          './public/index.html': './public/index-large.html'
+        }
+      }
+    },
     
 
     compress: {

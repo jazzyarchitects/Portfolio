@@ -49,15 +49,6 @@ module.exports = function(app) {
         next()
     });
     app.use(express.static(path.join(__dirname, '..', 'public')));
-    app.all('/', (req, res)=>{
-        fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), function(err, buf) {
-            if(err) {
-                return res.end("Some Error");
-            }
-            res.set('Content-Type', 'text/html');
-            res.send(buf.toString());
-        });
-    });
 
     // Error handler
     if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
