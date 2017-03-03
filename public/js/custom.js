@@ -25,12 +25,13 @@
 
   **/
 
-var monthNames = [
+  var monthNames = [
   "Jan", "Feb", "Mar",
   "Apr", "May", "Jun", "Jul",
   "Aug", "Sep", "Oct",
   "Nov", "Dec"
-];
+  ];
+
 
   var usedRepositories = [
   "https://github.com/code-lucidal58/Haptiq",
@@ -45,6 +46,7 @@ var monthNames = [
 
   jQuery(function($) {
     loadGithubData();
+
     /* ----------------------------------------------------------- */
 	/*  1. Mobile MENU
 	/* ----------------------------------------------------------- */
@@ -101,15 +103,15 @@ var monthNames = [
     }
   });
 	 // Slide Navigation
-   jQuery(".next1").click(function() {
+  jQuery(".next1").click(function() {
     owl1.trigger('next.owl.carousel');
   });
 
-   jQuery(".prev1").click(function() {
+  jQuery(".prev1").click(function() {
     owl1.trigger('prev.owl.carousel');
   });
 
-   /* ----------------------------------------------------------- */
+  /* ----------------------------------------------------------- */
 	/*  4. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
 	/* ----------------------------------------------------------- */
 
@@ -263,10 +265,10 @@ var monthNames = [
       lastId = id;
 	       // Set/remove active class
 	       menuItems
-         .parent().removeClass("active")
-         .end().filter("[href=\\#"+id+"]").parent().addClass("active");
-       }
-     })
+        .parent().removeClass("active")
+        .end().filter("[href=\\#"+id+"]").parent().addClass("active");
+      }
+    })
 
 	/* ----------------------------------------------------------- */
 	/*  8. PRELOADER
@@ -331,6 +333,41 @@ var monthNames = [
       // alert(JSON.stringifyO(response));
     });
   });
+
+  //Loading images async
+    var $image = $("#blogImg1");
+    var $downloadingImage = $("<img>");
+    $downloadingImage.load(function(){
+      $image.attr("src", $(this).attr("src"));
+    });
+    $downloadingImage.attr('src', 'https://d262ilb51hltx0.cloudfront.net/max/800/1*GQ7WY5f7sBk14Zj0H39cyQ.jpeg');
+
+
+    //Loading images async
+    var $image2 = $("#blogImg2");
+    var $downloadingImage2 = $("<img>");
+    $downloadingImage2.load(function(){
+      $image2.attr("src", $(this).attr("src"));
+    });
+    $downloadingImage2.attr('src', 'https://d262ilb51hltx0.cloudfront.net/max/800/1*wRzfp-ySY84GOk03dyzgwQ.png');
+
+
+    //Loading images async
+    var $image3 = $("#blogImg3");
+    var $downloadingImage3 = $("<img>");
+    $downloadingImage3.load(function(){
+      $image3.attr("src", $(this).attr("src"));
+    });
+    $downloadingImage3.attr('src', 'https://d262ilb51hltx0.cloudfront.net/max/800/1*G5UqXvQ737XmBO7jXaKmPg.png');
+
+
+    //Loading images async
+    var $map = $("#map");
+    var $downloadingImageMap = $("<img>");
+    $downloadingImageMap.load(function(){
+      $map.attr("src", $(this).attr("src"));
+    });
+    $downloadingImageMap.attr('src', 'img/map.png');
 });
 
 

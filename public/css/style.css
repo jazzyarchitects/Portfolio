@@ -112,7 +112,7 @@ nav .brand-logo img {
 
 
 #home {
-  background-image: url("img/banner.jpg");
+  background-image: url("/img/banner.jpg");
   background-position: 100% 100%;
   background-size: 100% 100%;
   display: inline;
@@ -761,7 +761,7 @@ display: flex;
 
 
 #facts {
-  background-image: url("img/project-banner.jpg");
+  background-image: url("/img/project-banner.jpg");
   background-position: center center;
   background-size: 100% 100%;
   display: inline;
