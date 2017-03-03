@@ -53,50 +53,30 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 *
 * Date: Nov 26, 2013
 */(function(e){"use strict";e.fn.counterUp=function(t){var n=e.extend({time:400,delay:10},t);return this.each(function(){var t=e(this),r=n,i=function(){var e=[],n=r.time/r.delay,i=t.text(),s=/[0-9]+,[0-9]+/.test(i);i=i.replace(/,/g,"");var o=/^[0-9]+$/.test(i),u=/^[0-9]+\.[0-9]+$/.test(i),a=u?(i.split(".")[1]||[]).length:0;for(var f=n;f>=1;f--){var l=parseInt(i/n*f);u&&(l=parseFloat(i/n*f).toFixed(a));if(s)while(/(\d+)(\d{3})/.test(l.toString()))l=l.toString().replace(/(\d+)(\d{3})/,"$1,$2");e.unshift(l)}t.data("counterup-nums",e);t.text("0");var c=function(){t.text(t.data("counterup-nums").shift());if(t.data("counterup-nums").length)setTimeout(t.data("counterup-func"),r.delay);else{delete t.data("counterup-nums");t.data("counterup-nums",null);t.data("counterup-func",null)}};t.data("counterup-func",c);setTimeout(t.data("counterup-func"),r.delay)};t.waypoint(i,{offset:"100%",triggerOnce:!0})})}})(jQuery);
-"use strict";
+'use strict';
 
-/**
-	* Template Name: MU Material
-	* Version: 1.1
-	* Template Scripts
-	* Author: MarkUps
-	* Author URI: http://www.markups.io/
-
-	Custom JS
-
-	1. MOBILE MENU
-	2. EXPERIENCE SLIDER (Owl Carousel)
-	3. EDUCATION SLIDER (Owl Carousel)
-	4. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
-	5. COUNTER
-	6. TESTIMONIAL SLIDER ( Owl Carousel )
-	7. MENU SMOOTH SCROLLING
-	8. PRELOADER
-	9. CALL TO ABOUT
-	10. BOTTOM TO UP
-	11. PARALLAX HEADER
-	12. HIRE ME SCROLL
-
-
-  **/
+  var iframeUrls = {
+    foodkart: 'https://www.youtube.com/embed/U6R2lfiSXoU',
+    haptiq: 'https://www.youtube.com/embed/JODCdEAgNwA',
+  };
 
   var monthNames = [
-  "Jan", "Feb", "Mar",
-  "Apr", "May", "Jun", "Jul",
-  "Aug", "Sep", "Oct",
-  "Nov", "Dec"
+  'Jan', 'Feb', 'Mar',
+  'Apr', 'May', 'Jun', 'Jul',
+  'Aug', 'Sep', 'Oct',
+  'Nov', 'Dec',
   ];
 
 
   var usedRepositories = [
-  "https://github.com/code-lucidal58/Haptiq",
-  "https://github.com/jazzyarchitects/Haptiq-Extension",
-  "https://github.com/jazzyarchitects/Haptiq-Server",
-  "https://github.com/jazzyarchitects/FoodKart-App",
-  "https://github.com/code-lucidal58/foodkartServer",
-  "https://github.com/jazzyarchitects/jGen",
-  "https://github.com/jazzyarchitects/java-inspired-node-logger",
-  "https://github.com/jazzyarchitects/electron-music-player"
+  'https://github.com/code-lucidal58/Haptiq',
+  'https://github.com/jazzyarchitects/Haptiq-Extension',
+  'https://github.com/jazzyarchitects/Haptiq-Server',
+  'https://github.com/jazzyarchitects/FoodKart-App',
+  'https://github.com/code-lucidal58/foodkartServer',
+  'https://github.com/jazzyarchitects/jGen',
+  'https://github.com/jazzyarchitects/java-inspired-node-logger',
+  'https://github.com/jazzyarchitects/electron-music-player',
   ];
 
   jQuery(function($) {
@@ -106,34 +86,34 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 	/*  1. Mobile MENU
 	/* ----------------------------------------------------------- */
 
-  jQuery(".button-collapse").sideNav();
+  jQuery('.button-collapse').sideNav();
 
   /* ----------------------------------------------------------- */
 	/*  2. Experience SLider(Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	var owl = $("#owl-carousel");
+	var owl = $('#owl-carousel');
   owl.owlCarousel({
     loop: true,
     margin: 10,
-    responsive:{
-      0:{
-        items: 1
+    responsive: {
+      0: {
+        items: 1,
       },
-      600:{
-        items: 2
+      600: {
+        items: 2,
       },
       1000: {
-        items: 2
-      }
-    }
+        items: 2,
+      },
+    },
   });
      // Slide Navigation
-     jQuery(".next").click(function() {
+     jQuery('.next').click(function() {
       owl.trigger('next.owl.carousel');
     });
 
-     jQuery(".prev").click(function() {
+     jQuery('.prev').click(function() {
       owl.trigger('prev.owl.carousel');
     });
 
@@ -141,28 +121,28 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 	/*  3. EDUCATION SLIDER (Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	var owl1 = $("#owl-carousel1");
+	var owl1 = $('#owl-carousel1');
 	owl1.owlCarousel({
     loop: true,
     margin: 10,
-    responsive:{
-      0:{
-        items: 1
+    responsive: {
+      0: {
+        items: 1,
       },
-      600:{
-        items: 2
+      600: {
+        items: 2,
       },
       1000: {
-        items: 3
-      }
-    }
+        items: 3,
+      },
+    },
   });
 	 // Slide Navigation
-  jQuery(".next1").click(function() {
+  jQuery('.next1').click(function() {
     owl1.trigger('next.owl.carousel');
   });
 
-  jQuery(".prev1").click(function() {
+  jQuery('.prev1').click(function() {
     owl1.trigger('prev.owl.carousel');
   });
 
@@ -170,27 +150,27 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 	/*  4. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
 	/* ----------------------------------------------------------- */
 
-	$('body').append("<div id='portfolio-popup'><div class='portfolio-popup-area'><div class='portfolio-popup-inner'></div></div></div>");
+	$('body').append('<div id=\'portfolio-popup\'><div class=\'portfolio-popup-area\'><div class=\'portfolio-popup-inner\'></div></div></div>');
 
 	// WHEN CLICK PLAY BUTTON
 
   jQuery('.portfolio-thumbnill').on('click', function(event) {
     event.preventDefault();
-    $('#portfolio-popup').addClass("portfolio-popup-show");
+    $('#portfolio-popup').addClass('portfolio-popup-show');
     $('#portfolio-popup').animate({
-     "opacity": 1
+     'opacity': 1,
    }, 500);
-    var portfolio_detailscontent = $(this).parent(".mix").find(".portfolio-detail").html();
-    $(".portfolio-popup-inner").html(portfolio_detailscontent);
+    var portfolio_detailscontent = $(this).parent('.mix').find('.portfolio-detail').html();
+    $('.portfolio-popup-inner').html(portfolio_detailscontent);
   });
 
     // WHEN CLICK CLOSE BUTTON
 
     $(document).on('click', '.modal-close-btn', function(event) {
      event.preventDefault();
-     $('#portfolio-popup').removeClass("portfolio-popup-show");
+     $('#portfolio-popup').removeClass('portfolio-popup-show');
      $('#portfolio-popup').animate({
-      "opacity": 0
+      'opacity': 0,
     }, 500);
    });
 
@@ -200,43 +180,41 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 
 	jQuery('.counter').counterUp({
     delay: 10,
-    time: 750
+    time: 750,
   });
 
   /* ----------------------------------------------------------- */
   /*  5.5. Project SLIDER (Owl Carousel)
   /* ----------------------------------------------------------- */
 
-  
-
 
   /* ----------------------------------------------------------- */
 	/*  6. TESTIMONIAL SLIDER (Owl Carousel)
 	/* ----------------------------------------------------------- */
 
-	var owl2 = $("#owl-carousel2");
+	var owl2 = $('#owl-carousel2');
   owl2.owlCarousel({
     loop: false,
     margin: 10,
-    responsive:{
-      0:{
-        items: 1
+    responsive: {
+      0: {
+        items: 1,
       },
-      600:{
-        items: 2
+      600: {
+        items: 2,
       },
       1000: {
-        items: 2
-      }
-    }
+        items: 2,
+      },
+    },
   });
 
    // Slide Navigation
-   jQuery(".next2").click(function() {
+   jQuery('.next2').click(function() {
     owl2.trigger('next.owl.carousel');
   });
 
-   jQuery(".prev2").click(function() {
+   jQuery('.prev2').click(function() {
     owl2.trigger('prev.owl.carousel');
   });
 
@@ -244,29 +222,29 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
   /*  6 b. SOCIAL SLIDER (Owl Carousel)
   /* ----------------------------------------------------------- */
 
-  var owl3 = $("#owl-carousel3");
+  var owl3 = $('#owl-carousel3');
   owl3.owlCarousel({
     loop: true,
     margin: 10,
-    responsive:{
-      0:{
-        items: 2
+    responsive: {
+      0: {
+        items: 2,
       },
-      600:{
-        items: 4
+      600: {
+        items: 4,
       },
       1000: {
-        items: 6
-      }
-    }
+        items: 6,
+      },
+    },
   });
 
     // Slide Navigation
-    jQuery(".next3").click(function() {
+    jQuery('.next3').click(function() {
       owl3.trigger('next.owl.carousel');
     });
 
-    jQuery(".prev3").click(function() {
+    jQuery('.prev3').click(function() {
       owl3.trigger('prev.owl.carousel');
     });
 
@@ -279,13 +257,13 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 
 	// Cache selectors
 	var lastId,
-	topMenu = $(".menu-scroll"),
+	topMenu = $('.menu-scroll'),
 	topMenuHeight = topMenu.outerHeight()+13,
 	// All list items
 	menuItems = topMenu.find('a[href^=\\#]'),
 	// Anchors corresponding to menu items
 	scrollItems = menuItems.map(function() {
-   var item = $($(this).attr("href"));
+   var item = $($(this).attr('href'));
    if (item.length) {
      return item;
    }
@@ -294,10 +272,10 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 	// Bind click handler to menu items
 	// so we can get a fancy scroll animation
 	menuItems.click(function(e) {
-   var href = $(this).attr("href"),
-   offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+15;
+   var href = $(this).attr('href'),
+   offsetTop = href === '#' ? 0 : $(href).offset().top-topMenuHeight+15;
    jQuery('html, body').stop().animate({
-     scrollTop: offsetTop
+     scrollTop: offsetTop,
    }, 900);
    e.preventDefault();
  });
@@ -314,16 +292,16 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
     });
 	   // Get the id of the current element
 	   cur = cur[cur.length-1];
-	   var id = cur && cur.length ? cur[0].id : "";
+	   var id = cur && cur.length ? cur[0].id : '';
 
 	   if (lastId !== id) {
       lastId = id;
 	       // Set/remove active class
 	       menuItems
-        .parent().removeClass("active")
-        .end().filter("[href=\\#"+id+"]").parent().addClass("active");
+        .parent().removeClass('active')
+        .end().filter('[href=\\#'+id+']').parent().addClass('active');
       }
-    })
+    });
 
 	/* ----------------------------------------------------------- */
 	/*  8. PRELOADER
@@ -333,15 +311,15 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
       $('.progress').fadeOut(); // will first fade out the loading animation
       $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
       $('body').delay(100).css({'overflow': 'visible'});
-    })
+    });
 
 	/* ----------------------------------------------------------- */
 	/* 9. CALL TO ABOUT
 	/* ----------------------------------------------------------- */
 
-	jQuery(".call-to-about").click(function() {
+	jQuery('.call-to-about').click(function() {
     jQuery('html,body').animate({
-      scrollTop: $("#about").offset().top},
+      scrollTop: $('#about').offset().top},
       'slow');
   });
 
@@ -349,9 +327,9 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 	/* 10. BOTTOM TO UP
 	/* ----------------------------------------------------------- */
 
-	jQuery(".up-btn").click(function() {
+	jQuery('.up-btn').click(function() {
     jQuery('html,body').animate({
-      scrollTop: $("#header").offset().top},
+      scrollTop: $('#header').offset().top},
       'slow');
   });
 
@@ -365,78 +343,63 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 	/* 12. HIRE ME SCROLL
 	/* ----------------------------------------------------------- */
 
-	jQuery(".hire-me-btn").click(function(e) {
+	jQuery('.hire-me-btn').click(function(e) {
 		e.preventDefault();
     jQuery('html,body').animate({
-      scrollTop: $("#footer").offset().top},
+      scrollTop: $('#footer').offset().top},
       'slow');
   });
 
-  $("#contact_me_send_message").click(function(e) {
+  $('#contact_me_send_message').click(function(e) {
     e.preventDefault();
     var data = {
-      name: $("input[name='contactName']").val(),
-      email: $("input[name='contactEmail']").val(),
-      subject: $("input[name='contactSubject']").val(),
-      message: $("textarea[name='contactMessage']").val()
-    }
-    var url = window.location.protocol+"//"+window.location.host+"/api/contact";
+      name: $('input[name=\'contactName\']').val(),
+      email: $('input[name=\'contactEmail\']').val(),
+      subject: $('input[name=\'contactSubject\']').val(),
+      message: $('textarea[name=\'contactMessage\']').val(),
+    };
+    var url = window.location.protocol+'//'+window.location.host+'/api/contact';
     $.post(url, data, function(response) {
       if(response.success) {
-        $("#contact_me_send_message").html('Thank You. I will revert back soon. :)')
+        $('#contact_me_send_message').html('Thank You. I will revert back soon. :)');
       }
       // alert(JSON.stringifyO(response));
     });
   });
 
-  //Loading images async
-    var $image = $("#blogImg1");
-    var $downloadingImage = $("<img>");
-    $downloadingImage.load(function(){
-      $image.attr("src", $(this).attr("src"));
-    });
-    $downloadingImage.attr('src', 'https://d262ilb51hltx0.cloudfront.net/max/800/1*GQ7WY5f7sBk14Zj0H39cyQ.jpeg');
+    var imageObjects = $("img");
+    var dummyImgs = [];
 
+    for(var i=0;i<imageObjects.length;i++){
+      var url = imageObjects[i].getAttribute("toLoad");
+      dummyImgs[i] = $("<img>");
+      dummyImgs[i].load(loadImage(imageObjects[i]));
+      dummyImgs[i].attr('src', url);
+    }
 
-    //Loading images async
-    var $image2 = $("#blogImg2");
-    var $downloadingImage2 = $("<img>");
-    $downloadingImage2.load(function(){
-      $image2.attr("src", $(this).attr("src"));
-    });
-    $downloadingImage2.attr('src', 'https://d262ilb51hltx0.cloudfront.net/max/800/1*wRzfp-ySY84GOk03dyzgwQ.png');
+    function loadImage(img){
+      return function(){
+        img.src = $(this).attr('src');
+      }
+    }
 
+    var foodkartFrame = $('#foodkart-frame');
+    foodkartFrame.attr('src', iframeUrls.foodkart);
 
-    //Loading images async
-    var $image3 = $("#blogImg3");
-    var $downloadingImage3 = $("<img>");
-    $downloadingImage3.load(function(){
-      $image3.attr("src", $(this).attr("src"));
-    });
-    $downloadingImage3.attr('src', 'https://d262ilb51hltx0.cloudfront.net/max/800/1*G5UqXvQ737XmBO7jXaKmPg.png');
-
-
-    //Loading images async
-    var $map = $("#map");
-    var $downloadingImageMap = $("<img>");
-    $downloadingImageMap.load(function(){
-      $map.attr("src", $(this).attr("src"));
-    });
-    $downloadingImageMap.attr('src', 'img/map.png');
+    var haptiqFrame = $("#haptiq-frame");
+    haptiqFrame.attr('src', iframeUrls.haptiq);
 });
 
 
-function loadGithubData(){
-  var URL = "https://api.github.com/users/jazzyarchitects/repos";
+function loadGithubData() {
+  var URL = 'https://api.github.com/users/jazzyarchitects/repos';
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-     // document.getElementById("demo").innerHTML = this.responseText;
-     // console.log(this.responseText);
      var response = JSON.parse(this.responseText);
      var projectList = [];
-     for(var i=0;i<response.length;i++){
-      if(usedRepositories.indexOf(response[i].html_url)!==-1){
+     for(var i=0; i<response.length; i++) {
+      if(usedRepositories.indexOf(response[i].html_url)!==-1) {
         continue;
       }
       projectList.push({
@@ -444,11 +407,11 @@ function loadGithubData(){
         url: response[i].html_url,
         description: response[i].description,
         language: response[i].language,
-        updatedAt: new Date(response[i].created_at)
+        updatedAt: new Date(response[i].created_at),
       });
     }
 
-    projectList.sort(function(a,b){
+    projectList.sort(function(a, b) {
       var aDate = a.updatedAt;
       var bDate = b.updatedAt;
       if(aDate > bDate) return -1;
@@ -456,53 +419,51 @@ function loadGithubData(){
       return 0;
     });
 
-    var rootElement = document.getElementById("owl-carousel4");
-    for(var i = 0;i<projectList.length;i++){
+    var rootElement = document.getElementById('owl-carousel4');
+    for(var i = 0; i<projectList.length; i++) {
       rootElement.appendChild(getRepositoryTemplate(projectList[i]));
     }
-    // console.log(projectList);
-    var owl4 = $("#owl-carousel4");
+    var owl4 = $('#owl-carousel4');
     owl4.owlCarousel({
       loop: true,
       margin: 10,
-      responsive:{
-        0:{
-          items: 1
+      responsive: {
+        0: {
+          items: 1,
         },
-        600:{
-          items: 2
+        600: {
+          items: 2,
         },
         1000: {
-          items: 4
-        }
-      }
+          items: 4,
+        },
+      },
     });
 
    // Slide Navigation
-   jQuery(".next4").click(function() {
+   jQuery('.next4').click(function() {
     owl4.trigger('next.owl.carousel');
   });
 
-   jQuery(".prev4").click(function() {
+   jQuery('.prev4').click(function() {
     owl4.trigger('prev.owl.carousel');
   });
-
  }
 };
-xhttp.open("GET", URL, true);
+xhttp.open('GET', URL, true);
 xhttp.send();
 }
 
-function getRepositoryTemplate(repo){
+function getRepositoryTemplate(repo) {
   var string = '<div class="github-content">';
   var heading = '<h3 style="width:100%;">'+repo.name+'</h3>';
-  if(repo.name.length>18){
+  if(repo.name.length>18) {
     heading = '<marquee speed="10">'+repo.name+'</marquee>';
   }
   string += heading;
 
-  var description =  '<span>'+repo.description+'</span>';
-  if(repo.description!==null && repo.description!==undefined){
+  var description = '<span>'+repo.description+'</span>';
+  if(repo.description!==null && repo.description!==undefined) {
     string += description;
   }
 
@@ -514,7 +475,7 @@ function getRepositoryTemplate(repo){
   string += '</div>';
 
   var node = document.createElement('div');
-  node.className = "col s12 item";
+  node.className = 'col s12 item';
   node.innerHTML = string;
   return node;
 }

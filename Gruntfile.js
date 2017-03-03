@@ -1,5 +1,7 @@
 "use strict";
 
+var mozjpeg = require('imagemin-mozjpeg');
+
 module.exports = function(grunt){
 
   // To time the grunt process
@@ -35,11 +37,20 @@ module.exports = function(grunt){
       }
     },
 
+    copy: {
+      main: {
+        expand: true,
+        cwd: './public/font/',
+        src: '**',
+        dest: './public/dest/font'
+      }
+    },
+
     
     uglify: {
       development:{
         files: {
-        './public/dest/js/script.min.js': ['./public/dest/concat/concat.js']
+          './public/dest/js/script.min.js': ['./public/dest/concat/concat.js']
         }
       }
     },
@@ -67,59 +78,45 @@ module.exports = function(grunt){
         }
       }
     },
-    
 
-    compress: {
-      main: {
-        options: {
-          mode: 'gzip'
+    imagemin: {
+      static: {
+        options:{
+          optimizationLevel: 7
         },
-        expand: true,
-        cwd: './public/dest',
-        src: ['**/*'],
-        dest: './public/dest/gzip/'
-      },
-      scripts: {
-        options: {
-          mode: 'gzip'
-        },
-        expand: true,
-        cwd: './public/dest',
-        src: ['**/*.js'],
-        dest: './public/dest/gzip/'
-      },
-      styles: {
-        options: {
-          mode: 'gzip'
-        },
-        expand: true,
-        cwd: './public/dest',
-        src: ['**/*.css'],
-        dest: './public/dest/gzip/'
-      }
+        files: [{
+        expand: true,                  
+        cwd: './public',                   
+        src: ['./img/*.{png,jpg,gif}', './logo/*.{png,jpg,gif}'],   
+        dest: './public/dest/'                  
+      }]
+    } 
+  },
+
+  watch: {
+    options: {
+      livereload: 3001
     },
-    
-
-    watch: {
-      options: {
-        livereload: 3000
-      },
-      scripts: {
-        files: ['./public/js/*.js'],
-        tasks: ['uglify', 'compress:scripts']
-      },
-      styles: {
-        files: ['./public/css/**/*.css'],
-        tasks: ['cssmin', 'compress:styles']
-      }
+    scripts: {
+      files: ['./public/js/*.js'],
+      tasks: [ 'concat:scripts', 'uglify']
+    },
+    styles: {
+      files: ['./public/css/*.css'],
+      tasks: ['concat:styles', 'cssmin']
+    },
+    html: {
+      files: ['./public/index-large.html'],
+      tasks: ['htmlmin']
     }
-  });
+  }
+});
 
   grunt.loadNpmTasks("gruntify-eslint");
 
   grunt.task.registerTask('js-files', "Cleans, Lints and minimises JavaScript files", ['eslint','clean:scripts', 'concat:scripts', 'uglify']);
   grunt.task.registerTask('css-files', "Cleans and minimises CSS files", ['clean:styles', 'concat:styles', 'cssmin']);
 
-  grunt.task.registerTask('serve', ['js-files', 'css-files', 'watch']);
-  grunt.task.registerTask('build', ['clean:all', 'js-files', 'css-files']);
+  grunt.task.registerTask('serve', ['js-files', 'css-files', 'imagemin', 'copy', 'watch']);
+  grunt.task.registerTask('build', ['clean:all', 'js-files', 'css-files', 'copy', 'imagemin']);
 }
