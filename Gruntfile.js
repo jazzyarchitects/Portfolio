@@ -11,7 +11,9 @@ module.exports = function(grunt){
   grunt.initConfig({
 
     clean: {
-      all: ['./public/dest/*', './public/dest/*/']
+      all: ['./public/dest/*', './public/dest/*/'],
+      scripts: ['./public/dest/**/*.js'],
+      styles: ['./public/dest/**/*.css']
     },
     
     eslint: {
@@ -19,14 +21,25 @@ module.exports = function(grunt){
         configFile: './.eslintrc.js',
         silent: true
       },
-      src: ['./**/*.js', '!./node_modules/**/*.js', '!./public/**/*.min.js']
+      src: ['./public/js/**/*.js', '!./node_modules/**/*.js']
+    },
+
+    concat: {
+      scripts: {
+        src: ['./public/js/*.js'],
+        dest: './public/dest/concat/concat.js'
+      },
+      styles: {
+        src: ['./public/css/*.css'],
+        dest: './public/dest/concat/concat.css'
+      }
     },
 
     
     uglify: {
       development:{
         files: {
-        './public/dest/js/script.min.js': ['./public/js/custom.js']
+        './public/dest/js/script.min.js': ['./public/dest/concat/concat.js']
         }
       }
     },
@@ -38,7 +51,7 @@ module.exports = function(grunt){
       },
       development: {
         files: {
-          './public/dest/css/styles.min.css': ['./public/css/*.css']
+          './public/dest/css/styles.min.css': ['./public/dest/concat/concat.css']
         }
       }
     },
@@ -91,4 +104,7 @@ module.exports = function(grunt){
   });
 
   grunt.loadNpmTasks("gruntify-eslint");
+
+  grunt.task.registerTask('js-files', "Cleans, Lints and minimises JavaScript files", ['eslint','clean:scripts', 'concat:scripts', 'uglify']);
+  grunt.task.registerTask('css-files', "Cleans and minimises CSS files", ['clean:styles', 'concat:styles', 'cssmin']);
 }
