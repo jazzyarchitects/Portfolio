@@ -119,4 +119,7 @@ module.exports = function(grunt){
 
   grunt.task.registerTask('js-files', "Cleans, Lints and minimises JavaScript files", ['eslint','clean:scripts', 'concat:scripts', 'uglify']);
   grunt.task.registerTask('css-files', "Cleans and minimises CSS files", ['clean:styles', 'concat:styles', 'cssmin']);
+
+  grunt.task.registerTask('serve', ['js-files', 'css-files', 'watch']);
+  grunt.task.registerTask('build', ['clean:all', 'js-files', 'css-files']);
 }
