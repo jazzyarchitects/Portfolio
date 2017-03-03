@@ -9,6 +9,10 @@ module.exports = function(grunt){
   require('jit-grunt')(grunt);
 
   grunt.initConfig({
+
+    clean: {
+      all: ['./public/dest/*', './public/dest/*/']
+    },
     
     eslint: {
       options: {
