@@ -9,6 +9,7 @@ module.exports = function(grunt){
   require('jit-grunt')(grunt);
 
   grunt.initConfig({
+    
     eslint: {
       options: {
         configFile: './.eslintrc.js',
@@ -16,6 +17,8 @@ module.exports = function(grunt){
       },
       src: ['./**/*.js', '!./node_modules/**/*.js', '!./public/**/*.min.js']
     },
+
+    
     uglify: {
       development:{
         files: {
@@ -23,6 +26,8 @@ module.exports = function(grunt){
         }
       }
     },
+    
+
     cssmin: {
       options:{
         restructuring: false
@@ -33,6 +38,8 @@ module.exports = function(grunt){
         }
       }
     },
+    
+
     compress: {
       main: {
         options: {
@@ -42,6 +49,39 @@ module.exports = function(grunt){
         cwd: './public/dest',
         src: ['**/*'],
         dest: './public/dest/gzip/'
+      },
+      scripts: {
+        options: {
+          mode: 'gzip'
+        },
+        expand: true,
+        cwd: './public/dest',
+        src: ['**/*.js'],
+        dest: './public/dest/gzip/'
+      },
+      styles: {
+        options: {
+          mode: 'gzip'
+        },
+        expand: true,
+        cwd: './public/dest',
+        src: ['**/*.css'],
+        dest: './public/dest/gzip/'
+      }
+    },
+    
+
+    watch: {
+      options: {
+        livereload: 3000
+      },
+      scripts: {
+        files: ['./public/js/*.js'],
+        tasks: ['uglify', 'compress:scripts']
+      },
+      styles: {
+        files: ['./public/css/**/*.css'],
+        tasks: ['cssmin', 'compress:styles']
       }
     }
   });
