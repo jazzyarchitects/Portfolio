@@ -19,8 +19,29 @@ module.exports = function(grunt){
     uglify: {
       development:{
         files: {
-        './public/dest/script.min.js': ['./public/js/*.js']
+        './public/dest/js/script.min.js': ['./public/js/*.js']
         }
+      }
+    },
+    cssmin: {
+      options:{
+        restructuring: false
+      },
+      development: {
+        files: {
+          './public/dest/css/styles.min.css': ['./public/css/*.css']
+        }
+      }
+    },
+    compress: {
+      main: {
+        options: {
+          mode: 'gzip'
+        },
+        expand: true,
+        cwd: './public/dest',
+        src: ['**/*'],
+        dest: './public/dest/gzip/'
       }
     }
   });
