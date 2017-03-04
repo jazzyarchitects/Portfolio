@@ -328,6 +328,20 @@
       }
     }
 
+    var $home = $("#home");
+    var dummyImgHome = $("<img>");
+    dummyImgHome.load(function(){
+      $home.css("background-image", "url('"+$(this).attr('src')+"')");
+    });
+    dummyImgHome.attr('src', '/dest/img/banner.jpg');
+
+    var $facts = $("#facts");
+    var dummyImgFacts = $("<img>");
+    dummyImgFacts.load(function(){
+      $facts.css("background-image", "url('"+$(this).attr('src')+"')");
+    });
+    dummyImgFacts.attr('src', '/dest/img/project-banner.jpg');
+
     var foodkartFrame = $('#foodkart-frame');
     foodkartFrame.attr('src', iframeUrls.foodkart);
 
