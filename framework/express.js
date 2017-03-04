@@ -42,13 +42,13 @@ module.exports = function(app) {
     // Request body parsing middleware should be above methodOverride
     app.use(bodyParser());
 
-    app.use(function(req, res, next) {
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-        res.header('Expires', '-1');
-        res.header('Pragma', 'no-cache');
-        next()
-    });
-    app.use(express.static(path.join(__dirname, '..', 'public')));
+    // app.use(function(req, res, next) {
+    //     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    //     res.header('Expires', '-1');
+    //     res.header('Pragma', 'no-cache');
+    //     next()
+    // });
+    app.use(express.static(path.join(__dirname, '..', 'public'), { maxAge: 21600000 }));
 
     // Error handler
     if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
