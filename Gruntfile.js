@@ -87,7 +87,7 @@ module.exports = function(grunt){
         files: [{
           expand: true,                  
           cwd: './public',                   
-          src: ['./img/*.{png,jpg,gif}', './logo/*.{png,jpg,gif}'],   
+          src: ['./img/*.{png,jpg,gif}', './logo/*.{png,jpg,gif}', '!./logo/rentomojo-experience.png'],   
           dest: './public/dest/'                  
         }]
       } 

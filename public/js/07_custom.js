@@ -252,11 +252,9 @@
 	/*  8. PRELOADER
 	/* ----------------------------------------------------------- */
 
-	jQuery(window).load(function() { // makes sure the whole site is loaded
-      $('.progress').fadeOut(); // will first fade out the loading animation
-      $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
-      $('body').delay(100).css({'overflow': 'visible'});
-    });
+	// jQuery(window).load(function() { // makes sure the whole site is loaded
+      
+ //    });
 
 	/* ----------------------------------------------------------- */
 	/* 9. CALL TO ABOUT
@@ -347,6 +345,12 @@
 
     var haptiqFrame = $("#haptiq-frame");
     haptiqFrame.attr('src', iframeUrls.haptiq);
+
+    $(document).ready(function(){
+      $('.progress').fadeOut(); // will first fade out the loading animation
+      $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
+      $('body').delay(100).css({'overflow': 'visible'});
+    });
 });
 
 
