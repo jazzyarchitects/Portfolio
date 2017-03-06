@@ -110,6 +110,11 @@ module.exports = (server)=>{
     }
   });
 
+
+  socket.on('browser-authentication', (data)=>{
+    io.emit('browser-authentication', data); 
+  });
+
 });
 }
 
