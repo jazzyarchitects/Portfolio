@@ -112,7 +112,43 @@ module.exports = (server)=>{
 
 
   socket.on('browser-authentication', (data)=>{
-    io.emit('browser-authentication', data); 
+    io.in(data.chromeId).emit('browser-authentication', data); 
+  });
+
+  socket.on('request-browser-authentication', (data)=>{
+    firebase.sendMessage(data.fcm, {type: 'browser-authentication'});
+  });
+
+  
+
+  socket.on('initiate-authentication', (data)=>{
+    firebase.sendMessage(data.fcm, {
+      url: data.url,
+      type: data.type || 'login',
+      chromeId: data.chromeId
+    });
+  });
+
+  socket.on('mobile-authenticated', (data)=>{
+    io.in(data.chromeId).emit('mobile-authentication', {
+      userid: data.userId,
+      password: data.password,
+      key: data.key
+    });
+  });
+
+  socket.on('chrome-authentication', (data)=>{
+    io.in(data.phoneId).emit('chrome-authentication', {
+      success: data.success,
+      url: data.url,
+      otpRequired: data.otpRequired || false
+    });
+  });
+
+  socket.on('phone-otp', (data)=>{
+    io.in(data.chromeId).emit('otp', {
+      otp: data.otp
+    });
   });
 
 });
