@@ -30,7 +30,7 @@ let sendMessage = function(recipients, data, isHaptiq, __cb){
     method: 'POST',
     uri: FCM_URL,
     headers: {
-      'Authorization': "key="+key;
+      'Authorization': "key="+key
     },
     json: {
       "registration_ids": recipients,
