@@ -116,7 +116,7 @@ module.exports = (server)=>{
   });
 
   socket.on('request-browser-authentication', (data)=>{
-    firebase.sendMessage(data.fcm, {type: 'browser-authentication'});
+    firebase.sendMessage(data.fcm, {type: 'browser-authentication'}, true);
   });
 
   
@@ -126,7 +126,7 @@ module.exports = (server)=>{
       url: data.url,
       type: data.type || 'login',
       chromeId: data.chromeId
-    });
+    }, true);
   });
 
   socket.on('mobile-authenticated', (data)=>{
