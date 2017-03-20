@@ -1,33 +1,33 @@
 'use strict';
 
-  var iframeUrls = {
-    foodkart: 'https://www.youtube.com/embed/U6R2lfiSXoU',
-    haptiq: 'https://www.youtube.com/embed/JODCdEAgNwA',
-  };
+var iframeUrls = {
+  foodkart: 'https://www.youtube.com/embed/U6R2lfiSXoU',
+  haptiq: 'https://www.youtube.com/embed/JODCdEAgNwA',
+};
 
-  var monthNames = [
-  'Jan', 'Feb', 'Mar',
-  'Apr', 'May', 'Jun', 'Jul',
-  'Aug', 'Sep', 'Oct',
-  'Nov', 'Dec',
-  ];
+var monthNames = [
+'Jan', 'Feb', 'Mar',
+'Apr', 'May', 'Jun', 'Jul',
+'Aug', 'Sep', 'Oct',
+'Nov', 'Dec',
+];
 
 
-  var usedRepositories = [
-  'https://github.com/code-lucidal58/Haptiq',
-  'https://github.com/jazzyarchitects/Haptiq-Extension',
-  'https://github.com/jazzyarchitects/Haptiq-Server',
-  'https://github.com/jazzyarchitects/FoodKart-App',
-  'https://github.com/code-lucidal58/foodkartServer',
-  'https://github.com/jazzyarchitects/jGen',
-  'https://github.com/jazzyarchitects/java-inspired-node-logger',
-  'https://github.com/jazzyarchitects/electron-music-player',
-  ];
+var usedRepositories = [
+'https://github.com/code-lucidal58/Haptiq',
+'https://github.com/jazzyarchitects/Haptiq-Extension',
+'https://github.com/jazzyarchitects/Haptiq-Server',
+'https://github.com/jazzyarchitects/FoodKart-App',
+'https://github.com/code-lucidal58/foodkartServer',
+'https://github.com/jazzyarchitects/jGen',
+'https://github.com/jazzyarchitects/java-inspired-node-logger',
+'https://github.com/jazzyarchitects/electron-music-player',
+];
 
-  jQuery(function($) {
-    loadGithubData();
+jQuery(function($) {
+  loadGithubData();
 
-    /* ----------------------------------------------------------- */
+  /* ----------------------------------------------------------- */
 	/*  1. Mobile MENU
 	/* ----------------------------------------------------------- */
 
@@ -83,15 +83,15 @@
     },
   });
 	 // Slide Navigation
-  jQuery('.next1').click(function() {
+   jQuery('.next1').click(function() {
     owl1.trigger('next.owl.carousel');
   });
 
-  jQuery('.prev1').click(function() {
+   jQuery('.prev1').click(function() {
     owl1.trigger('prev.owl.carousel');
   });
 
-  /* ----------------------------------------------------------- */
+   /* ----------------------------------------------------------- */
 	/*  4. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
 	/* ----------------------------------------------------------- */
 
@@ -113,11 +113,20 @@
 
     $(document).on('click', '.modal-close-btn', function(event) {
      event.preventDefault();
-     $('#portfolio-popup').removeClass('portfolio-popup-show');
-     $('#portfolio-popup').animate({
-      'opacity': 0,
-    }, 500);
+     closePopup();
    });
+
+    $(document).keyup(function(e){
+      if(e.keyCode == 27)}
+        closePopup();
+    })
+
+    function closePopup(){
+      $('#portfolio-popup').removeClass('portfolio-popup-show');
+      $('#portfolio-popup').animate({
+        'opacity': 0,
+      }, 500);
+    }
 
     /* ----------------------------------------------------------- */
 	/*  5. COUNTER
@@ -238,25 +247,26 @@
 	   // Get the id of the current element
 	   cur = cur[cur.length-1];
 	   var id = cur && cur.length ? cur[0].id : '';
+     console.log(id);
 
 	   if (lastId !== id) {
       lastId = id;
 	       // Set/remove active class
 	       menuItems
-        .parent().removeClass('active')
-        .end().filter('[href=\\#'+id+']').parent().addClass('active');
-      }
-    });
+         .parent().removeClass('active')
+         .end().filter('[href=\\#'+id+']').parent().addClass('active');
+       }
+     });
 
 	/* ----------------------------------------------------------- */
 	/*  8. PRELOADER
 	/* ----------------------------------------------------------- */
 
 	// jQuery(window).load(function() { // makes sure the whole site is loaded
-      
+
  //    });
 
-	/* ----------------------------------------------------------- */
+ /* ----------------------------------------------------------- */
 	/* 9. CALL TO ABOUT
 	/* ----------------------------------------------------------- */
 
@@ -310,46 +320,47 @@
     });
   });
 
-    var imageObjects = $("img");
-    var dummyImgs = [];
+  var imageObjects = $("img");
+  var dummyImgs = [];
 
-    for(var i=0;i<imageObjects.length;i++){
-      var url = imageObjects[i].getAttribute("toLoad");
-      dummyImgs[i] = $("<img>");
-      dummyImgs[i].load(loadImage(imageObjects[i]));
-      dummyImgs[i].attr('src', url);
+  for(var i=0;i<imageObjects.length;i++){
+    var url = imageObjects[i].getAttribute("toLoad");
+    dummyImgs[i] = $("<img>");
+    dummyImgs[i].load(loadImage(imageObjects[i]));
+    dummyImgs[i].attr('src', url);
+  }
+
+  function loadImage(img){
+    return function(){
+      img.src = $(this).attr('src');
     }
+  }
 
-    function loadImage(img){
-      return function(){
-        img.src = $(this).attr('src');
-      }
-    }
+  var $home = $("#home");
+  var dummyImgHome = $("<img>");
+  dummyImgHome.load(function(){
+    $home.css("background-image", "url('"+$(this).attr('src')+"')");
+  });
+  dummyImgHome.attr('src', '/dest/img/banner.jpg');
 
-    var $home = $("#home");
-    var dummyImgHome = $("<img>");
-    dummyImgHome.load(function(){
-      $home.css("background-image", "url('"+$(this).attr('src')+"')");
-    });
-    dummyImgHome.attr('src', '/dest/img/banner.jpg');
+  var $facts = $("#facts");
+  var dummyImgFacts = $("<img>");
+  dummyImgFacts.load(function(){
+    $facts.css("background-image", "url('"+$(this).attr('src')+"')");
+  });
+  dummyImgFacts.attr('src', '/dest/img/project-banner.jpg');
 
-    var $facts = $("#facts");
-    var dummyImgFacts = $("<img>");
-    dummyImgFacts.load(function(){
-      $facts.css("background-image", "url('"+$(this).attr('src')+"')");
-    });
-    dummyImgFacts.attr('src', '/dest/img/project-banner.jpg');
+  var foodkartFrame = $('#foodkart-frame');
+  foodkartFrame.attr('src', iframeUrls.foodkart);
 
-    var foodkartFrame = $('#foodkart-frame');
-    foodkartFrame.attr('src', iframeUrls.foodkart);
+  var haptiqFrame = $("#haptiq-frame");
+  haptiqFrame.attr('src', iframeUrls.haptiq);
 
-    var haptiqFrame = $("#haptiq-frame");
-    haptiqFrame.attr('src', iframeUrls.haptiq);
-
-    $(document).ready(function(){
+  $(document).ready(function(){
       $('.progress').fadeOut(); // will first fade out the loading animation
       $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
       $('body').delay(100).css({'overflow': 'visible'});
+      $("#resume").click();
     });
 });
 
