@@ -118,5 +118,6 @@ module.exports = function(grunt){
   grunt.task.registerTask('css-files', "Cleans and minimises CSS files", ['clean:styles', 'concat:styles', 'cssmin']);
 
   grunt.task.registerTask('serve', ['js-files', 'css-files', 'htmlmin', 'imagemin', 'copy', 'watch']);
+  grunt.task.registerTask('serve-noimage', ['js-files', 'css-files', 'htmlmin','copy', 'watch']);
   grunt.task.registerTask('build', ['clean:all', 'js-files', 'css-files', 'htmlmin', 'copy', 'imagemin']);
 }

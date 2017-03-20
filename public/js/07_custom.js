@@ -24,6 +24,13 @@ var usedRepositories = [
 'https://github.com/jazzyarchitects/electron-music-player',
 ];
 
+function closePopup(){
+  $('#portfolio-popup').removeClass('portfolio-popup-show');
+  $('#portfolio-popup').animate({
+    'opacity': 0,
+  }, 500);
+}
+
 jQuery(function($) {
   loadGithubData();
 
@@ -83,15 +90,15 @@ jQuery(function($) {
     },
   });
 	 // Slide Navigation
-   jQuery('.next1').click(function() {
+  jQuery('.next1').click(function() {
     owl1.trigger('next.owl.carousel');
   });
 
-   jQuery('.prev1').click(function() {
+  jQuery('.prev1').click(function() {
     owl1.trigger('prev.owl.carousel');
   });
 
-   /* ----------------------------------------------------------- */
+  /* ----------------------------------------------------------- */
 	/*  4. LIGHTBOX ( FOR PORTFOLIO POPUP VIEW )
 	/* ----------------------------------------------------------- */
 
@@ -117,16 +124,9 @@ jQuery(function($) {
    });
 
     $(document).keyup(function(e){
-      if(e.keyCode == 27)}
+      if(e.keyCode == 27)
         closePopup();
-    })
-
-    function closePopup(){
-      $('#portfolio-popup').removeClass('portfolio-popup-show');
-      $('#portfolio-popup').animate({
-        'opacity': 0,
-      }, 500);
-    }
+    });
 
     /* ----------------------------------------------------------- */
 	/*  5. COUNTER
@@ -247,16 +247,15 @@ jQuery(function($) {
 	   // Get the id of the current element
 	   cur = cur[cur.length-1];
 	   var id = cur && cur.length ? cur[0].id : '';
-     console.log(id);
 
-	   if (lastId !== id) {
+    if (lastId !== id) {
       lastId = id;
 	       // Set/remove active class
 	       menuItems
-         .parent().removeClass('active')
-         .end().filter('[href=\\#'+id+']').parent().addClass('active');
-       }
-     });
+        .parent().removeClass('active')
+        .end().filter('[href=\\#'+id+']').parent().addClass('active');
+      }
+    });
 
 	/* ----------------------------------------------------------- */
 	/*  8. PRELOADER
@@ -360,7 +359,7 @@ jQuery(function($) {
       $('.progress').fadeOut(); // will first fade out the loading animation
       $('#preloader').delay(100).fadeOut('slow'); // will fade out the white DIV that covers the website.
       $('body').delay(100).css({'overflow': 'visible'});
-      $("#resume").click();
+      $(document).click();
     });
 });
 
