@@ -5,6 +5,9 @@ var iframeUrls = {
   haptiq: 'https://www.youtube.com/embed/JODCdEAgNwA',
 };
 
+var isInCooldown = false;
+var contactTimer;
+
 var monthNames = [
 'Jan', 'Feb', 'Mar',
 'Apr', 'May', 'Jun', 'Jul',
@@ -114,6 +117,8 @@ jQuery(function($) {
    }, 500);
     var portfolio_detailscontent = $(this).parent('.mix').find('.portfolio-detail').html();
     $('.portfolio-popup-inner').html(portfolio_detailscontent);
+    if(!isInCooldown){
+    }
   });
 
     // WHEN CLICK CLOSE BUTTON
@@ -304,6 +309,9 @@ jQuery(function($) {
 
   $('#contact_me_send_message').click(function(e) {
     e.preventDefault();
+    if(isInCooldown){
+      return alert('Wow..!!so many messages for me. Kindly mail me directly at jibinmathews7@gmail.com');
+    }
     var data = {
       name: $('input[name=\'contactName\']').val(),
       email: $('input[name=\'contactEmail\']').val(),
@@ -315,6 +323,8 @@ jQuery(function($) {
       if(response.success) {
         $('#contact_me_send_message').html('Thank You. I will revert back soon. :)');
       }
+      isInCooldown = true;
+      contactTimer = setTimeout( function(){isInCooldown = false;$('#contact_me_send_message').html('Send Message');}, 2 * 60 * 1000);
       // alert(JSON.stringifyO(response));
     });
   });
