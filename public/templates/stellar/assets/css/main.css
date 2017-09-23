@@ -4019,3 +4019,33 @@ body.is-loading #header.alt .logo {
 .solid-state #wrapper {
   max-width: initial;
 }
+
+#main .solid-state b,
+#main .solid-state strong {
+  color: #fff;
+}
+
+.chip {
+  padding: 4px 10px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0);
+  /* color: #2e3141; */
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  line-height: 35px;
+  margin-left: 3px;
+  font-size: 0.7em;
+  white-space: nowrap;
+  transition: all 250ms;
+}
+
+#main .solid-state a.chip:hover {
+  /* background: rgba(255, 255, 255, 0.5); */
+  /* color: #2e3141; */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1);
+}
+
+.fa.fa-external-link {
+  font-size: 0.8em;
+}

@@ -48,3 +48,5 @@ jspm_packages
 tmp/
 
 public/dest/concat/
+
+.DS_Store

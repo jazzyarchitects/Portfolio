@@ -3114,7 +3114,7 @@ body.is-loading #banner p {
 .wrapper.spotlight .image {
   border-radius: 100%;
   margin: 0 3em 2em 0;
-  width: 22em;
+  width: 18em;
   overflow: hidden;
   -ms-flex: 1;
 }
@@ -3316,4 +3316,48 @@ body.is-loading #banner p {
   .wrapper .inner {
     padding: 2em 1.5em 0.1em 1.5em;
   }
+}
+
+.spotlight .buttons b {
+  text-decoration: underline;
+}
+
+.spotlight p {
+  text-align: justify;
+  text-align-last: left;
+}
+
+.spotlight:nth-child(2n - 1) p {
+  text-align-last: right;
+}
+
+.spotlight h2.major {
+  border-bottom: dotted rgba(255, 255, 255, 0.4) 1px;
+}
+
+.spotlight .buttons .btn {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 1px;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.25s;
+}
+.spotlight .buttons .btn:hover {
+  /* box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 5px; */
+  background: #fff;
+  color: #2e3141;
+}
+
+.wrapper.wrapper2:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%232e3141%3B'  /%3E%3C/svg%3E");
+}
+
+.wrapper.wrapper2:after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,0 100,0 100,100  0,100' style='fill:%232e3141%3B'  /%3E%3C/svg%3E");
+}
+
+.wrapper.wrapper2.alt:before {
+  transform: scaleX(1);
 }
