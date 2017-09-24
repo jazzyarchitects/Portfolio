@@ -7,7 +7,7 @@
 <html>
 
 <head>
-  <title>Projects</title>
+  <title>FoodKart</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -21,7 +21,6 @@
 
   <!-- Wrapper -->
   <div id="wrapper" class="projects">
-
     <!-- Header -->
     <header id="header">
       <h1>Projects</h1>
@@ -30,8 +29,9 @@
 
     <nav id="nav">
       <ul>
-        <li><a href="#" onclick="window.open('./index.html', '_self')">Home</a></li>
-        <li><a href="#" class="active">Haptiq</a></li>
+        <li><a href="#" onclick="window.open('../index.html', '_self')">Home</a></li>
+        <li><a href="#" class="active">FoodKart</a></li>
+        <li><a href="#" onclick="window.open('./index.html', '_self')">Projects</a></li>
       </ul>
     </nav>
     <!-- Main -->
@@ -46,7 +46,7 @@
             <a href="#" class="image"><img src="../images/pic01.jpg" alt="" /></a>
             <div class="content">
               <h2 class="major" style="margin-bottom: 2px;">Haptiq</h2>
-              <hr class="hr-underline" />
+              <hr style="margin: 2px 0;" />
               <p>The prototype built during Hackfest 2017 in 36hrs, Haptiq is a fingerprint based authentication system for
                 social logins. It enables you to login to various social sites using your Android Phone's Biometric authentication
                 system. Your data is kept confidential. The app uses AES 256-bit encryption for communicating with the chrome
@@ -64,53 +64,67 @@
                   <a class="chip">Socket.IO</a>
                   <a class="chip">Chrome Extension</a>
                 </div>
-
-                <a href="haptiq.html" class="special">Learn more</a>
               </div>
             </div>
           </div>
-          <div class="project">
-            <hr class="seperator" />
-            <a href="#" class="image"><img src="../images/pic01.jpg" alt="" /></a>
-            <div class="content">
-              <h2 class="major" style="margin-bottom: 2px;">FoodKart</h2>
-              <hr class="hr-underline" />
-              <p>An android application created with an objective to make ordering food more economical for students. This app
-                pools enables individuals to pool together orders of various individuals together hence benefiting the individuals.
-              </p>
-              <div class="buttons" style="margin-top: 10px">
-                <b>Project Repositories</b>&nbsp;&nbsp;
-                <a class="waves-effect waves-teal btn" href="https://github.com/jazzyarchitects/FoodKart-App" target="_blank"><i class="fa fa-android" aria-hidden="true"></i>&nbsp;&nbsp;Android App</a>
-                <a class="waves-effect waves-teal btn" href="https://github.com/code-lucidal58/foodkartServer" target="_blank" style="margin-left: 2px;"><i class="fa fa-cloud" aria-hidden="true"></i>&nbsp;&nbsp;Server</a>
-                <div style="margin-top: 3px;">
-                  <b>Technologies used:</b>
-                  <a class="chip">Android</a>
-                  <a class="chip">Ruby On Rails</a>
-                  <a class="chip">SQLite</a>
-                  <a class="chip">MongoDB</a>
-                </div>
+          <div class="inner details">
 
-                <a href="foodkart.html" class="special">Learn more</a>
-              </div>
-            </div>
-          </div>
-          <div class="inner">
+            <h3 class="major">Why?</h3>
+            <hr style="margin: 2px 0;" />
+            <p>One day as usual I was browsing Facebook and then I went outside for a call. In the meantime my room mate opened
+              my Facebook account on my laptop and then posted some embarrassing thing on my wall. Then from that day I used
+              to log out every time I went away from laptop. But then one day he used my saved password to login to my account
+              and do it again. Now I deleted all saved passwords and used to log out every time I went outside. But typing
+              the password everytime was becoming a frustrating task.<br /> I wondered if I could make something which would
+              enable me to login to social sites without the need of password everytime in such a way that no one else can
+              access it also...
+            </p>
+
+            <h3 class="major">See it in action</h3>
+            <hr style="margin: 2px 0;" />
+            <table width="100%">
+              <tr>
+                <td colspan="2" align="center">
+                  <img src="/img/haptiq/haptiq-gif.gif" height="220" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <iframe height="250" width="430" src="https://www.youtube.com/embed/5-DhJmpos5s" frameborder="0" allowfullscreen></iframe>
+                </td>
+                <td>
+                  <iframe height="250" width="430" src="https://www.youtube.com/embed/JODCdEAgNwA" frameborder="0" allowfullscreen>
+                  </iframe>
+                </td>
+              </tr>
+            </table>
+
+            <h3 class="major">Screens</h3>
+            <table>
+              <tr>
+                <td width="50%">
+                  <img src="/img/haptiq/haptiq-screen-1.png" width="100%" />
+                </td>
+                <td width="50%">
+                  <img src="/img/haptiq/haptiq-screen-2.png" width="100%" />
+                  </iframe>
+                </td>
+              </tr>
+            </table>
 
 
-
-
+            <h3 class="major">Other Projects</h3>
+            <hr style="margin: 2px 0;" />
             <section class="features">
               <article>
-                <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-                <h3 class="major">Sed feugiat lorem</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-                <a href="#" class="special">Learn more</a>
+                <h3 class="major">Haptiq</h3>
+                <p>Fingerprint based authentication system for social sites</p>
+                <a href="haptiq.html" class="special">Learn more</a>
               </article>
               <article>
-                <a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-                <h3 class="major">Nisl placerat</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-                <a href="#" class="special">Learn more</a>
+                <h3 class="major">Music Player</h3>
+                <p>An electron based music player</p>
+                <a href="music-player.html" class="special">Learn more</a>
               </article>
             </section>
 

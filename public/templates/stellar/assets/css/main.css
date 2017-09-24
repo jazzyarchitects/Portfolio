@@ -4079,9 +4079,13 @@ body.is-loading #header.alt .logo {
 }
 
 .wrapper .project {
-  padding: 3em 0 1em 0;
+  padding: 0em 0 1em 0;
   margin: 0 auto;
   width: 55em;
+}
+
+.wrapper .project:first-child {
+  padding-top: 3em;
 }
 
 .wrapper .project p {
@@ -4143,6 +4147,11 @@ body.is-loading #header.alt .logo {
   color: #ffffff;
 }
 
+.project{
+  text-align: justify;
+  text-align-last: left;
+}
+
 .project:nth-child(2n) {
   -moz-flex-direction: row-reverse;
   -webkit-flex-direction: row-reverse;
@@ -4155,4 +4164,16 @@ body.is-loading #header.alt .logo {
 .wrapper .project:nth-child(2n) > a {
   float: right;
   margin: 0.5em 1em;
+}
+
+.seperator {
+  border: none;
+  margin-top: 0;
+  border-top: dotted 1px rgba(47, 50, 66, 0.4);
+}
+
+.hr-underline {
+  border: none;
+  margin: 2px 0;
+  border-top: solid 1px #eee;
 }
