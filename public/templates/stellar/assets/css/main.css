@@ -3804,7 +3804,7 @@ body.is-loading #header.alt .logo {
   border-color: #dddddd;
 }
 
-#main > .main {
+#main > .main:not(.solid-state) {
   padding: 5em 5em 3em 5em;
   border-top: solid 1px #dddddd;
 }
@@ -3830,7 +3830,7 @@ body.is-loading #header.alt .logo {
 }
 
 @media screen and (max-width: 1280px) {
-  #main > .main {
+  #main > .main:not(.solid-state) {
     padding: 4em 4em 2em 4em;
   }
 
@@ -4046,6 +4046,113 @@ body.is-loading #header.alt .logo {
   color: rgba(255, 255, 255, 1);
 }
 
-.fa.fa-external-link {
+#main .solid-state a.fa {
   font-size: 0.8em;
+}
+
+.inverted {
+  background-color: #fff;
+  color: #2e3141;
+}
+
+.inverted article {
+  background-color: #dedede;
+  color: #2f3242;
+}
+
+#main .solid-state .inverted a.chip {
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+#main .solid-state .inverted a.chip:hover {
+  border-color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
+}
+
+#main .solid-state .inverted article * {
+  color: #2f3242;
+}
+
+#main .solid-state .inverted * {
+  color: #2f3242;
+}
+
+.wrapper .project {
+  padding: 3em 0 1em 0;
+  margin: 0 auto;
+  width: 55em;
+}
+
+.wrapper .project p {
+  margin: 0;
+}
+
+.wrapper .project > a {
+  float: left;
+  margin: 0.5em 1em;
+}
+
+.wrapper .project a img {
+  width: 15em;
+}
+
+.inverted .buttons .btn {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(47, 50, 66, 0.5);
+  padding: 5px 10px;
+  border-radius: 1px;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.25s;
+}
+
+#main .solid-state .inverted .buttons .btn:hover {
+  background: rgba(47, 50, 66, 1);
+  color: #fff;
+}
+
+#main .solid-state .inverted .buttons .btn:hover i {
+  color: #ffffff;
+}
+
+.details p {
+  text-align: justify;
+  text-align-last: left;
+}
+
+.details table td {
+  padding: 0.75em 0;
+}
+
+.details .features {
+  width: initial;
+  margin: initial;
+}
+
+.projects #nav {
+  background-color: #2e3141;
+  z-index: 2;
+}
+
+.inverted {
+  margin-top: 0;
+}
+
+.projects #nav a:not(.active):hover {
+  color: #ffffff;
+}
+
+.project:nth-child(2n) {
+  -moz-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  text-align: justify;
+  text-align-last: right;
+}
+
+.wrapper .project:nth-child(2n) > a {
+  float: right;
+  margin: 0.5em 1em;
 }
