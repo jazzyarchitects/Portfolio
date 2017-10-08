@@ -2908,7 +2908,7 @@ body.is-menu-visible #menu .inner {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 2000px) {
   #banner {
     padding: 7em 0 8.25em 0;
     background-color: #2e3141;
@@ -3010,7 +3010,7 @@ body.is-loading #banner p {
 
 .wrapper:before {
   left: 0;
-  top: -6.5em;
+  top: -6.49em;
 }
 
 .wrapper:after {
