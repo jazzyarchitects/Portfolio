@@ -4147,7 +4147,7 @@ body.is-loading #header.alt .logo {
   color: #ffffff;
 }
 
-.project{
+.project {
   text-align: justify;
   text-align-last: left;
 }
@@ -4176,4 +4176,76 @@ body.is-loading #header.alt .logo {
   border: none;
   margin: 2px 0;
   border-top: solid 1px #eee;
+}
+
+.medicine-row,
+.node-modules-row {
+  width: 55em;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  flex-direction: row;
+}
+
+.medicine-item {
+  width: 25%;
+  display: flex;
+  padding: 0 1em;
+  text-align: justify;
+}
+
+.medicine-item:nth-child(2n) {
+  width: 50%;
+}
+
+.medicine-item > div {
+  width: 100%;
+}
+
+.medicine-item h3,
+.node-modules-row > h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.medicine-item > img {
+  border-radius: 8px;
+}
+
+.medicine-item p {
+  margin: 0 0 0.5em 0;
+}
+
+.medicine-item hr {
+  border: 2px solid #eee;
+  border-bottom: none;
+}
+
+.node-modules-item {
+  width: 49.8%;
+  text-align: justify;
+  padding: 0 1em;
+}
+
+.node-modules-item.left {
+  text-align-last: left;
+  text-align: left;
+}
+
+.node-modules-item.right {
+  text-align-last: right;
+  text-align: right;
+}
+
+/* .node-modules-item:nth-child(2n-1) h3 {
+  text-align: left;
+}
+
+.node-modules-item:nth-child(2n) h3 {
+  text-align: left;
+} */
+
+.vertical-hr {
+  width: 1px;
+  border: solid 1px #eee;
 }
