@@ -4094,7 +4094,7 @@ body.is-loading #header.alt .logo {
 
 .wrapper .project > a {
   float: left;
-  margin: 0.5em 1em;
+  margin:   0.5em 1em 0.5em 0;
 }
 
 .wrapper .project a img {
@@ -4129,7 +4129,7 @@ body.is-loading #header.alt .logo {
   padding: 0.75em 0;
 }
 
-.details .features {
+.details .features, .projects .features {
   width: initial;
   margin: initial;
 }
@@ -4212,7 +4212,7 @@ body.is-loading #header.alt .logo {
   border-radius: 8px;
 }
 
-.medicine-item p {
+.medicine-item p, .node-modules-item p {
   margin: 0 0 0.5em 0;
 }
 
@@ -4228,13 +4228,13 @@ body.is-loading #header.alt .logo {
 }
 
 .node-modules-item.left {
+  text-align: justify;
   text-align-last: left;
-  text-align: left;
 }
 
 .node-modules-item.right {
+  text-align: justify;
   text-align-last: right;
-  text-align: right;
 }
 
 /* .node-modules-item:nth-child(2n-1) h3 {
