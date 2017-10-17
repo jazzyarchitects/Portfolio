@@ -4094,11 +4094,17 @@ body.is-loading #header.alt .logo {
 
 .wrapper .project > a {
   float: left;
-  margin:   0.5em 1em 0.5em 0;
+  margin: 0.5em 1em 0.5em 0;
 }
 
 .wrapper .project a img {
   width: 15em;
+}
+
+.wrapper .blog a img {
+  width: 27em;
+  height: 27em;
+  object-fit: cover;
 }
 
 .inverted .buttons .btn {
@@ -4129,12 +4135,13 @@ body.is-loading #header.alt .logo {
   padding: 0.75em 0;
 }
 
-.details .features, .projects .features {
+.details .features,
+.projects .features {
   width: initial;
   margin: initial;
 }
 
-.projects #nav {
+.menu-section #nav {
   background-color: #2e3141;
   z-index: 2;
 }
@@ -4212,7 +4219,8 @@ body.is-loading #header.alt .logo {
   border-radius: 8px;
 }
 
-.medicine-item p, .node-modules-item p {
+.medicine-item p,
+.node-modules-item p {
   margin: 0 0 0.5em 0;
 }
 
@@ -4248,4 +4256,17 @@ body.is-loading #header.alt .logo {
 .vertical-hr {
   width: 1px;
   border: solid 1px #eee;
+}
+#main
+  .solid-state
+  .inverted
+  .blog
+  .buttons
+  a.waves-effect.waves-teal.btn.round {
+  border-radius: 5px;
+}
+
+.project.blog .content {
+  min-height: 27em;
+  margin-bottom: 10px;
 }
