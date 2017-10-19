@@ -5,135 +5,136 @@
 */
 
 (function($) {
+  skel.breakpoints({
+    xlarge: '(max-width: 1680px)',
+    large: '(max-width: 1280px)',
+    medium: '(max-width: 980px)',
+    small: '(max-width: 736px)',
+    xsmall: '(max-width: 480px)',
+    xxsmall: '(max-width: 360px)',
+  });
 
-	skel.breakpoints({
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)',
-		xxsmall: '(max-width: 360px)'
-	});
+  $(function() {
+    var $window = $(window),
+      $body = $('body'),
+      $main = $('#main');
 
-	$(function() {
+    // Disable animations/transitions until the page has loaded.
+    $body.addClass('is-loading');
 
-		var	$window = $(window),
-			$body = $('body'),
-			$main = $('#main');
+    $window.on('load', function() {
+      window.setTimeout(function() {
+        $body.removeClass('is-loading');
+      }, 100);
+    });
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+    // Fix: Placeholder polyfill.
+    $('form').placeholder();
 
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
-			});
+    // Prioritize "important" elements on medium.
+    skel.on('+medium -medium', function() {
+      $.prioritize(
+        '.important\\28 medium\\29',
+        skel.breakpoint('medium').active,
+      );
+    });
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+    // Nav.
+    var $nav = $('#nav');
 
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+    if ($nav.length > 0) {
+      // Shrink effect.
+      $main.scrollex({
+        mode: 'top',
+        enter: function() {
+          $nav.addClass('alt');
+        },
+        leave: function() {
+          $nav.removeClass('alt');
+        },
+      });
 
-		// Nav.
-			var $nav = $('#nav');
+      // Links.
+      var $nav_a = $nav.find('a');
 
-			if ($nav.length > 0) {
+      $nav_a
+        .scrolly({
+          speed: 1000,
+          offset: function() {
+            return $nav.height();
+          },
+        })
+        .on('click', function() {
+          var $this = $(this);
 
-				// Shrink effect.
-					$main
-						.scrollex({
-							mode: 'top',
-							enter: function() {
-								$nav.addClass('alt');
-							},
-							leave: function() {
-								$nav.removeClass('alt');
-							},
-						});
+          // External link? Bail.
+          if ($this.attr('href').charAt(0) != '#') return;
 
-				// Links.
-					var $nav_a = $nav.find('a');
+          // Deactivate all links.
+          $nav_a.removeClass('active').removeClass('active-locked');
 
-					$nav_a
-						.scrolly({
-							speed: 1000,
-							offset: function() { return $nav.height(); }
-						})
-						.on('click', function() {
+          // Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
+          $this.addClass('active').addClass('active-locked');
+        })
+        .each(function() {
+          var $this = $(this),
+            id = $this.attr('href'),
+            $section = $(id);
 
-							var $this = $(this);
+          // No section for this link? Bail.
+          if ($section.length < 1) return;
 
-							// External link? Bail.
-								if ($this.attr('href').charAt(0) != '#')
-									return;
+          // Scrollex.
+          $section.scrollex({
+            mode: 'middle',
+            initialize: function() {
+              // Deactivate section.
+              if (skel.canUse('transition')) $section.addClass('inactive');
+            },
+            enter: function() {
+              // Activate section.
+              $section.removeClass('inactive');
 
-							// Deactivate all links.
-								$nav_a
-									.removeClass('active')
-									.removeClass('active-locked');
+              // No locked links? Deactivate all links and activate this section's one.
+              if ($nav_a.filter('.active-locked').length == 0) {
+                $nav_a.removeClass('active');
+                $this.addClass('active');
+              } else if ($this.hasClass('active-locked'))
+                // Otherwise, if this section's link is the one that's locked, unlock it.
+                $this.removeClass('active-locked');
+            },
+          });
+        });
+    }
 
-							// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
-								$this
-									.addClass('active')
-									.addClass('active-locked');
-
-						})
-						.each(function() {
-
-							var	$this = $(this),
-								id = $this.attr('href'),
-								$section = $(id);
-
-							// No section for this link? Bail.
-								if ($section.length < 1)
-									return;
-
-							// Scrollex.
-								$section.scrollex({
-									mode: 'middle',
-									initialize: function() {
-
-										// Deactivate section.
-											if (skel.canUse('transition'))
-												$section.addClass('inactive');
-
-									},
-									enter: function() {
-
-										// Activate section.
-											$section.removeClass('inactive');
-
-										// No locked links? Deactivate all links and activate this section's one.
-											if ($nav_a.filter('.active-locked').length == 0) {
-
-												$nav_a.removeClass('active');
-												$this.addClass('active');
-
-											}
-
-										// Otherwise, if this section's link is the one that's locked, unlock it.
-											else if ($this.hasClass('active-locked'))
-												$this.removeClass('active-locked');
-
-									}
-								});
-
-						});
-
-			}
-
-		// Scrolly.
-			$('.scrolly').scrolly({
-				speed: 1000
-			});
-
-	});
-
+    // Scrolly.
+    $('.scrolly').scrolly({
+      speed: 1000,
+    });
+  });
 })(jQuery);
+
+window.includeHTML = function(cb) {
+  var z, i, elmnt, file, xhttp;
+  z = document.getElementsByTagName('*');
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    file = elmnt.getAttribute('data-include-html');
+    if (file) {
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          elmnt.innerHTML = this.responseText;
+          elmnt.removeAttribute('data-include-html');
+          window.includeHTML(cb);
+        }
+      };
+      xhttp.open('GET', file, true);
+      xhttp.send();
+      return;
+    }
+  }
+  if (cb) cb();
+};
+
+window.includeHTML();
