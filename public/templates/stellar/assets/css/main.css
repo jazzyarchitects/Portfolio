@@ -4281,8 +4281,8 @@ body.is-loading #header.alt .logo {
   color: #2e3141;
 }
 
-#main .solid-state .timeline-container p,
-#main .solid-state .timeline-container ul {
+#main .solid-state .timeline-container .container:not(.invisible) p,
+#main .solid-state .timeline-container .container:not(.invisible) ul {
   font-size: 0.8em;
   text-align: justify;
 }
@@ -4386,7 +4386,36 @@ body.is-loading #header.alt .logo {
   border-radius: 6px;
 }
 
-.timeline-container .invisible.left:before, .timeline-container .invisible.right:before {
+/* .timeline-container .container:hover::after {
+  border-color: #05b873;
+} */
+
+.timeline-container .container.project:after {
+  border-color: #55b1ff;
+}
+.timeline-container .container:hover::after {
+  transform: scale(1.2);
+  border-color: #05b873;
+}
+
+.timeline-container .container.project.invisible p{
+  margin: 0;
+}
+
+.timeline-container .container.invisible.project .content.invisible {
+  transition: all 0.1s;
+  background-color: rgba(255, 255, 255, 0.43);
+}
+.timeline-container .container.invisible:hover .content.invisible {
+  padding: 20px 30px;
+  height: initial;
+  background-color: white;
+  position: relative;
+  visibility: visible;
+  border-radius: 6px;
+}
+
+.timeline-container .container.left.invisible:before {
   content: ' ';
   height: 0;
   position: absolute;
@@ -4394,16 +4423,22 @@ body.is-loading #header.alt .logo {
   width: 0;
   z-index: 1;
   right: 30px;
-  transition: all 0.3s;
-  border: none;
+  border: medium solid rgba(255, 255, 255, 0.43);
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.43);
 }
 
-.timeline-container .container:hover::after {
-  border-color: #05b873;
-}
-.timeline-container .container.invisible:hover::after {
-  transform: scale(1.2);
-  border-color: #05b873;
+.timeline-container .container.right.invisible:before {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid rgba(255, 255, 255, 0.43);
+  border-width: 10px 10px 10px 0;
+  border-color: transparent rgba(255, 255, 255, 0.43) transparent transparent;
 }
 
 .timeline-container .container.left.invisible:hover:before {
@@ -4420,25 +4455,43 @@ body.is-loading #header.alt .logo {
 }
 
 .timeline-container .container.right.invisible:hover:before {
-  content: ' ';
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  right: 30px;
   border: medium solid white;
   border-width: 10px 10px 10px 0;
   border-color: transparent white transparent transparent;
 }
 
-.timeline-container .content.invisible {
-  padding: 0;
-  height: 0px;
-  margin-bottom: 30px;
-  background-color: white;
-  position: relative;
-  border-radius: 6px;
+
+.container.right.invisible.project .content.invisible *{
+  text-align-last: left;
+}
+
+.container.invisible.project .content.invisible p a:before{
+  -moz-transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 100%;
+  border: solid 2px rgba(0, 0, 0, 0.4);
+  content: '\f105';
+  display: inline-block;
+  font-size: 1.25em;
+  height: 2em;
+  padding-left: 0.6em;
+  line-height: 1.65em;
+  margin-right: 0.85em;
+  text-align: center;
+  text-indent: 0.15em;
+  vertical-align: middle;
+  width: 2em;
+}
+
+.container.invisible.project .content.invisible p a:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: none !important;
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
@@ -4462,6 +4515,32 @@ body.is-loading #header.alt .logo {
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent;
   }
+  .timeline-container .container.left.invisible:before, .timeline-container .container.after.invisible:before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent rgba(255, 255, 255, 0.43) transparent transparent;
+  }
+  .timeline-container .container.left.invisible:hover:before{
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+    text-align: left;
+  }
+  .timeline-container .container.left.invisible:hover:before, .timeline-container .container.after.invisible:hover:before{
+    border-color: transparent white transparent transparent;
+    text-align: left;
+  }
+  .container.left.invisible.project .content.invisible p{
+    text-align-last: left;
+  }
+
+  .timeline-container .container.project:after {
+    border-color: #55b1ff;
+  }
+  .timeline-container .container:hover::after {
+    transform: scale(1.2);
+    border-color: #05b873;
+  }
 
   /* Make sure all circles are at the same spot */
   .timeline-container .left::after,
@@ -4472,5 +4551,18 @@ body.is-loading #header.alt .logo {
   /* Make all right containers behave like the left ones */
   .timeline-container .right {
     left: 0%;
+  }
+
+  .timeline-container .container.invisible.project .content.invisible {
+    transition: all 0.1s;
+    background-color: rgba(255, 255, 255, 0.43);
+  }
+  .timeline-container .container.invisible:hover .content.invisible {
+    padding: 20px 30px;
+    height: initial;
+    background-color: white;
+    position: relative;
+    visibility: visible;
+    border-radius: 6px;
   }
 }
