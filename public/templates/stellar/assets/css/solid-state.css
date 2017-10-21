@@ -3010,7 +3010,7 @@ body.is-loading #banner p {
 
 .wrapper:before {
   left: 0;
-  top: -6.49em;
+  top: -6.52em;
 }
 
 .wrapper:after {
@@ -3439,3 +3439,5 @@ a > h3.major {
 /* .projects .wrapper.spotlight {
   background-color: #2e3141;
 } */
+
+/* 415088 */

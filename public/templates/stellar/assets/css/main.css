@@ -4099,6 +4099,8 @@ body.is-loading #header.alt .logo {
 
 .wrapper .project a img {
   width: 15em;
+  height: 15em;
+  object-fit: contain;
 }
 
 .wrapper .blog a img {
@@ -4217,6 +4219,9 @@ body.is-loading #header.alt .logo {
 
 .medicine-item > img {
   border-radius: 8px;
+  height: 15em;
+  object-fit: cover;
+  object-position: 0 0;
 }
 
 .medicine-item p,
@@ -4492,6 +4497,16 @@ body.is-loading #header.alt .logo {
   font-style: normal;
   font-weight: normal;
   text-transform: none !important;
+
+  font-size: 1em;
+  height: 1.5em;
+  padding-left: 0.35em;
+  line-height: 1.3em;
+  width: 1.5em;
+}
+
+.container.right.invisible.project .content.invisible a{
+  border-bottom: none;
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
