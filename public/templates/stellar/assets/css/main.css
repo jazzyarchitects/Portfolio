@@ -1793,14 +1793,11 @@ body {
 
 body {
   background-color: #4d5993;
-  background-image: url('images/overlay.png'),
-    -moz-linear-gradient(45deg, #359659 15%, #4d5993 85%);
+  background-image: url('images/overlay.png'), -moz-linear-gradient(45deg, #359659 15%, #4d5993 85%);
   background-image: url('images/overlay.png'),
     -webkit-linear-gradient(45deg, #359659 15%, #4d5993 85%);
-  background-image: url('images/overlay.png'),
-    -ms-linear-gradient(45deg, #359659 15%, #4d5993 85%);
-  background-image: url('images/overlay.png'),
-    linear-gradient(45deg, #359659 15%, #4d5993 85%);
+  background-image: url('images/overlay.png'), -ms-linear-gradient(45deg, #359659 15%, #4d5993 85%);
+  background-image: url('images/overlay.png'), linear-gradient(45deg, #359659 15%, #4d5993 85%);
 }
 
 body.is-loading *,
@@ -3410,9 +3407,8 @@ body.is-loading #header.alt .logo {
 #nav {
   -moz-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease,
     border-top-right-radius 0.2s ease, padding 0.2s ease;
-  -webkit-transition: background-color 0.2s ease,
-    border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease,
-    padding 0.2s ease;
+  -webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease,
+    border-top-right-radius 0.2s ease, padding 0.2s ease;
   -ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease,
     border-top-right-radius 0.2s ease, padding 0.2s ease;
   transition: background-color 0.2s ease, border-top-left-radius 0.2s ease,
@@ -4262,12 +4258,7 @@ body.is-loading #header.alt .logo {
   width: 1px;
   border: solid 1px #eee;
 }
-#main
-  .solid-state
-  .inverted
-  .blog
-  .buttons
-  a.waves-effect.waves-teal.btn.round {
+#main .solid-state .inverted .blog .buttons a.waves-effect.waves-teal.btn.round {
   border-radius: 5px;
 }
 
@@ -4343,6 +4334,8 @@ body.is-loading #header.alt .logo {
 /* Place the container to the left */
 .timeline-container .left {
   left: 0;
+  text-align: right;
+  text-align-last: right;
 }
 
 /* Place the container to the right */
@@ -4386,9 +4379,15 @@ body.is-loading #header.alt .logo {
 /* The actual content */
 .timeline-container .content {
   padding: 20px 30px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: all 0.25s;
   position: relative;
   border-radius: 6px;
+}
+
+.timeline-container .content:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.01);
 }
 
 /* .timeline-container .container:hover::after {
@@ -4403,12 +4402,19 @@ body.is-loading #header.alt .logo {
   border-color: #05b873;
 }
 
-.timeline-container .container.project.invisible p{
+.timeline-container .container h4 span{
+  text-transform: uppercase;
+  color: #888;
+  font-size: 0.6em;
+  letter-spacing: 2px;
+}
+
+.timeline-container .container.project.invisible p {
   margin: 0;
 }
 
 .timeline-container .container.invisible.project .content.invisible {
-  transition: all 0.1s;
+  transition: all 0.25s;
   background-color: rgba(255, 255, 255, 0.43);
 }
 .timeline-container .container.invisible:hover .content.invisible {
@@ -4465,12 +4471,11 @@ body.is-loading #header.alt .logo {
   border-color: transparent white transparent transparent;
 }
 
-
-.container.right.invisible.project .content.invisible *{
+.container.right.invisible.project .content.invisible * {
   text-align-last: left;
 }
 
-.container.invisible.project .content.invisible p a:before{
+.container.invisible.project .content.invisible p a:before {
   -moz-transition: background-color 0.2s ease-in-out;
   -webkit-transition: background-color 0.2s ease-in-out;
   -ms-transition: background-color 0.2s ease-in-out;
@@ -4505,8 +4510,15 @@ body.is-loading #header.alt .logo {
   width: 1.5em;
 }
 
-.container.right.invisible.project .content.invisible a{
+.container.right.invisible.project .content.invisible a {
   border-bottom: none;
+}
+
+.timeline .chip{
+  border-radius: 7px;
+  border:none;
+  background: #4e5a92;
+  color: #fff!important;
 }
 
 /* Media queries - Responsive timeline on screens less than 600px wide */
@@ -4530,22 +4542,24 @@ body.is-loading #header.alt .logo {
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent;
   }
-  .timeline-container .container.left.invisible:before, .timeline-container .container.after.invisible:before {
+  .timeline-container .container.left.invisible:before,
+  .timeline-container .container.after.invisible:before {
     left: 60px;
     border: medium solid white;
     border-width: 10px 10px 10px 0;
     border-color: transparent rgba(255, 255, 255, 0.43) transparent transparent;
   }
-  .timeline-container .container.left.invisible:hover:before{
+  .timeline-container .container.left.invisible:hover:before {
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent;
     text-align: left;
   }
-  .timeline-container .container.left.invisible:hover:before, .timeline-container .container.after.invisible:hover:before{
+  .timeline-container .container.left.invisible:hover:before,
+  .timeline-container .container.after.invisible:hover:before {
     border-color: transparent white transparent transparent;
     text-align: left;
   }
-  .container.left.invisible.project .content.invisible p{
+  .container.left.invisible.project .content.invisible p {
     text-align-last: left;
   }
 
@@ -4580,4 +4594,27 @@ body.is-loading #header.alt .logo {
     visibility: visible;
     border-radius: 6px;
   }
+}
+
+
+.medium-button{
+  background: #03a87c;
+  border: none;
+  color: #ffffff!important;
+  height: initial;
+  padding: 10px 30px;
+  font-size: 0.9em;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  transition: all 0.25s;
+  border-radius: 5px;
+}
+.medium-button:hover{
+  box-shadow: 2px 3px 10px rgba(0,0,0,0.3);
+  background: #02bb8a;
+  /* background: #058462; */
+}
+
+#main .solid-state .inverted article:first-child a.special:not(.button):before {
+  transform: scaleX(-1);
 }
