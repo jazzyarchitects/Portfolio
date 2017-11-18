@@ -4184,12 +4184,17 @@ body.is-loading #header.alt .logo {
 }
 
 .medicine-row,
-.node-modules-row {
+.node-modules-row,
+.git-repositories {
   width: 55em;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   flex-direction: row;
+}
+
+.git-repositories{
+  display: inherit;
 }
 
 .medicine-item {

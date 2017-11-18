@@ -23,6 +23,7 @@
     $body.addClass('is-loading');
 
     $window.on('load', function() {
+      loadGithubData();
       window.setTimeout(function() {
         $body.removeClass('is-loading');
       }, 100);
@@ -33,10 +34,7 @@
 
     // Prioritize "important" elements on medium.
     skel.on('+medium -medium', function() {
-      $.prioritize(
-        '.important\\28 medium\\29',
-        skel.breakpoint('medium').active,
-      );
+      $.prioritize('.important\\28 medium\\29', skel.breakpoint('medium').active);
     });
 
     // Nav.
@@ -138,3 +136,78 @@ window.includeHTML = function(cb) {
 };
 
 window.includeHTML();
+
+var ignoredRepos = [
+  'https://github.com/code-lucidal58/Haptiq',
+  'https://github.com/jazzyarchitects/Haptiq-Extension',
+  'https://github.com/jazzyarchitects/Haptiq-Server',
+  'https://github.com/jazzyarchitects/FoodKart-App',
+  'https://github.com/code-lucidal58/foodkartServer',
+  'https://github.com/jazzyarchitects/fasttext-node',
+  'https://github.com/jazzyarchitects/java-inspired-node-logger',
+  'https://github.com/jazzyarchitects/electron-music-player',
+  'https://github.com/jazzyarchitects/hacktoberfest',
+  'https://github.com/jazzyarchitects/awesome-first-timers',
+  'https://github.com/jazzyarchitects/first-contributions',
+  'https://github.com/jazzyarchitects/awesome-developers',
+];
+
+function loadGithubData() {
+  if (sessionStorage.getItem('projects')) {
+    return addRepoList();
+  }
+  var URL = 'https://api.github.com/users/jazzyarchitects/repos';
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var response = JSON.parse(this.responseText);
+      var projectList = [];
+      for (var i = 0; i < response.length; i++) {
+        if (ignoredRepos.indexOf(response[i].html_url) !== -1) {
+          continue;
+        }
+        projectList.push({
+          name: response[i].name,
+          url: response[i].html_url,
+          description: response[i].description,
+          language: response[i].language,
+          updatedAt: new Date(response[i].created_at),
+        });
+      }
+
+      projectList.sort(function(a, b) {
+        var aDate = a.updatedAt;
+        var bDate = b.updatedAt;
+        if (aDate > bDate) return -1;
+        if (aDate < bDate) return 1;
+        return 0;
+      });
+
+      sessionStorage.setItem('projects', JSON.stringify(projectList));
+
+      addRepoList();
+    }
+  };
+
+  xhttp.open('GET', URL, true);
+  xhttp.send();
+}
+
+function addRepoList() {
+  var rootElement = document.querySelector('.git-repositories');
+  if (!rootElement) {
+    return;
+  }
+  var list = JSON.parse(sessionStorage.getItem('projects'));
+  list.forEach(function(project) {
+    var liElem = document.createElement('li');
+    liElem.innerHTML =
+      '<a href="' +
+      project.url +
+      '" target="_blank"><b>' +
+      project.name +
+      '</b></a>  -  ' +
+      project.description;
+    rootElement.appendChild(liElem);
+  });
+}
