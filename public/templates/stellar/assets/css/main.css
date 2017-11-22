@@ -4098,6 +4098,21 @@ body.is-loading #header.alt .logo {
   height: 15em;
   object-fit: contain;
 }
+.wrapper .project.workshop a{
+  width: 100%;
+}
+
+.wrapper .project.workshop a img {
+  width: 45em;
+  height: 25em;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.wrapper .project.workshop .content p {
+  text-align: center;
+  text-align-last: center;
+}
 
 .wrapper .blog a img {
   width: 27em;

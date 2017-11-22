@@ -24,6 +24,12 @@
 
     $window.on('load', function() {
       loadGithubData();
+      var showProjects = document.getElementById('toggle-projects');
+      if (showProjects) {
+        showProjects.onchange = function(e) {
+          toggleProjects(e.target.checked);
+        };
+      }
       window.setTimeout(function() {
         $body.removeClass('is-loading');
       }, 100);
@@ -209,5 +215,12 @@ function addRepoList() {
       '</b></a>  -  ' +
       project.description;
     rootElement.appendChild(liElem);
+  });
+}
+
+function toggleProjects(show) {
+  var projectItems = document.querySelectorAll('.timeline-container .timeline .container.project');
+  projectItems.forEach(function(node) {
+    node.style.display = show ? 'block' : 'none';
   });
 }
