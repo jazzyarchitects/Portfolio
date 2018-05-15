@@ -40,7 +40,10 @@
 
     // Prioritize "important" elements on medium.
     skel.on('+medium -medium', function() {
-      $.prioritize('.important\\28 medium\\29', skel.breakpoint('medium').active);
+      $.prioritize(
+        '.important\\28 medium\\29',
+        skel.breakpoint('medium').active,
+      );
     });
 
     // Nav.
@@ -156,6 +159,12 @@ var ignoredRepos = [
   'https://github.com/jazzyarchitects/awesome-first-timers',
   'https://github.com/jazzyarchitects/first-contributions',
   'https://github.com/jazzyarchitects/awesome-developers',
+  'https://github.com/jazzyarchitects/dotenv',
+  'https://github.com/jazzyarchitects/bull',
+  'https://github.com/jazzyarchitects/ant-design',
+  'https://github.com/jazzyarchitects/ascii-emoji',
+  'https://github.com/jazzyarchitects/a4academics1',
+  'https://github.com/jazzyarchitects/jazzyarchitects.github.io',
 ];
 
 function loadGithubData() {
@@ -219,7 +228,9 @@ function addRepoList() {
 }
 
 function toggleProjects(show) {
-  var projectItems = document.querySelectorAll('.timeline-container .timeline .container.project');
+  var projectItems = document.querySelectorAll(
+    '.timeline-container .timeline .container.project',
+  );
   projectItems.forEach(function(node) {
     node.style.display = show ? 'block' : 'none';
   });

@@ -58,7 +58,9 @@ module.exports = function(grunt) {
       },
       development: {
         files: {
-          './public/dest/css/styles.min.css': ['./public/dest/concat/concat.css'],
+          './public/dest/css/styles.min.css': [
+            './public/dest/concat/concat.css',
+          ],
         },
       },
     },
@@ -69,12 +71,14 @@ module.exports = function(grunt) {
           removeComments: true,
           collapseWhitespace: true,
         },
-        files: {
-          expand: true,
-          cwd: './public',
-          src: '/templates/stellar/**/*.html',
-          dest: './public',
-        },
+        files: [
+          {
+            expand: true,
+            cwd: './public',
+            src: '/templates/stellar/**/*.html',
+            dest: './public',
+          },
+        ],
       },
     },
 
@@ -119,12 +123,11 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('gruntify-eslint');
 
-  grunt.task.registerTask('js-files', 'Cleans, Lints and minimises JavaScript files', [
-    'eslint',
-    'clean:scripts',
-    'concat:scripts',
-    'uglify',
-  ]);
+  grunt.task.registerTask(
+    'js-files',
+    'Cleans, Lints and minimises JavaScript files',
+    ['eslint', 'clean:scripts', 'concat:scripts', 'uglify'],
+  );
   grunt.task.registerTask('css-files', 'Cleans and minimises CSS files', [
     'clean:styles',
     'concat:styles',
@@ -135,11 +138,17 @@ module.exports = function(grunt) {
     'js-files',
     'css-files',
     'htmlmin',
-    'imagemin',
+    // 'imagemin',
     'copy',
     'watch',
   ]);
-  grunt.task.registerTask('serve-noimage', ['js-files', 'css-files', 'htmlmin', 'copy', 'watch']);
+  grunt.task.registerTask('serve-noimage', [
+    'js-files',
+    'css-files',
+    'htmlmin',
+    'copy',
+    'watch',
+  ]);
   grunt.task.registerTask('build', [
     'clean:all',
     'js-files',
