@@ -80,7 +80,7 @@
 				margin: 30,
 				items: 2,
 				autoplay: true,
-				smartSpeed: 2500,
+				smartSpeed: 5000,
 				dots: true,
 				responsiveClass: true,
 				responsive: {
