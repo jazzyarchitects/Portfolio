@@ -2,11 +2,19 @@
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
+  <!-- Required meta tags -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-88371949-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-88371949-1');
+</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
-	<title>Jibin's Blogs</title>
+	<title>Jibin's Projects</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -55,7 +63,7 @@
         <div class="banner_inner d-flex align-items-center">
             <div class="container">
                 <div class="banner_content text-center">
-                    <h2>Portfolio</h2>
+                    <h2>Projects</h2>
                     <div class="page_link">
                         <a href="index.html">Home</a>
                         <a href="#">Projects</a>
@@ -77,48 +85,32 @@
 			</div>
 			<div class="filters portfolio-filter">
 				<ul>
-					<li class="active" data-filter="*">All</li>
-					<li data-filter=".project">Projects</li>
-					<li data-filter=".workshop">Workshops</li>
+					<li class="active" data-filter="*">All Projects</li>
+					<li data-filter=".android">Android</li>
+          <li data-filter=".web">Web Technologies</li>
+          <li data-filter=".node">Node Modules</li>
+
 				</ul>
       </div>
       
 			<div class="filters-content">
           <div class="row portfolio-grid justify-content-center">
-            <div class="col-lg-4 col-md-6 all workshop">
-              <div class="portfolio_box">
-                <div class="single_portfolio">
-                  <a href="workshops.html">
-                      <img class="img-fluid w-100" src="img/portfolio/Android-basics.jpg" alt="">
-                  </a>
-                  <div class="overlay"></div>
-								<a href="img/portfolio/p1.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-                </div>
-                <div class="short_info">
-                  <h4><a href="workshops.html">Android Basics</a></h4>
-                  <p>Workshop taken at IIT(ISM) Dhanbad</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 all blog">
-                <div class="portfolio_box">
-                  <div class="single_portfolio">
-                    
-                    <a href="https://blog.hellojs.org/web-development-how-to-start-in-2017-b2357febe8ba">
-                      <img class="img-fluid w-100" src="https://cdn-images-1.medium.com/max/2000/1*PNATyAREKSIR-v8AmWoq8w.png" alt="">
-                    </a>
-                  </div>
-                  <div class="short_info">
-                    <h4><a href="https://blog.hellojs.org/web-development-how-to-start-in-2017-b2357febe8ba">Web Development - How to get started in 2017</a></h4>
-                    <p>Blog @ HelloJS</p>
+
+              <div class="col-lg-4 col-md-6 all android">
+                  <div class="portfolio_box">
+                    <div class="single_portfolio">
+                      
+                      <a href="haptiq.html">
+                        <img class="img-fluid w-100" src="img/portfolio/haptiq-gif.gif" alt="">
+                      </a>
+                    </div>
+                    <div class="short_info">
+                      <h4><a href="haptiq.html">Haptiq</a></h4>
+                      <p>Fingerprint based social login application</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <div class="col-lg-4 col-md-6 all project">
+            <div class="col-lg-4 col-md-6 all android">
               <div class="portfolio_box">
                 <div class="single_portfolio">
                   
@@ -132,7 +124,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 all project">
+            <div class="col-lg-4 col-md-6 all web">
               <div class="portfolio_box">
                 <div class="single_portfolio">
                   
@@ -147,21 +139,7 @@
               </div>
             </div>
             
-                
-            <div class="col-lg-4 col-md-6 all workshop">
-                <div class="portfolio_box">
-                    <div class="single_portfolio">
-                        <a href="blog.html">
-                          <img class="img-fluid w-100" src="img/portfolio/Android-advanced.jpg" alt="">
-                        </a>
-                    </div>
-                  <div class="short_info">
-                    <h4><a href="blog.html">Android Advanced</a></h4>
-                    <p>By Cyberlabs</p>
-                  </div>
-                </div>
-              </div>
-            <div class="col-lg-4 col-md-6 all project">
+            <div class="col-lg-4 col-md-6 all android">
               <div class="portfolio_box">
                 <div class="single_portfolio">
                     <a href="foodkart.html">
@@ -174,264 +152,15 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6  all project">
-                <div class="portfolio_box">
-                    <div class="single_portfolio">
-                        <a href="projects.html">
-                          <img class="img-fluid w-100" src="img/portfolio/more-projects.png" alt="">
-                        </a>
-                    </div>
-                  <div class="short_info">
-                    <h4><a href="projects.html" target="_blank">More Projects</a></h4>
-                    <p>More daring projects</p>
-                  </div>
-                </div>
-              </div>
-              
-            <div class="col-lg-4 col-md-6 all blog">
-                <div class="portfolio_box">
-                  <div class="single_portfolio">
-                    
-                    <a href="https://medium.com/coinmonks/so-what-is-a-blockchain-by-a-full-stack-developer-416a2ea3428f">
-                      <img class="img-fluid w-100" src="https://cdn-images-1.medium.com/max/1200/1*mYBfoiLmftLVjWkORY93DQ.jpeg" alt="">
-                    </a>
-                  </div>
-                  <div class="short_info">
-                    <h4><a href="https://medium.com/coinmonks/so-what-is-a-blockchain-by-a-full-stack-developer-416a2ea3428f">So what is a blockchain? By a “Full stack developer”</a></h4>
-                    <p>Blog @ Coinmonks</p>
-                  </div>
-                </div>
-              </div>
-            <div class="col-lg-4 col-md-6 all workshop">
-                <div class="portfolio_box">
-                    <div class="single_portfolio">
-                        <a href="blog.html">
-                          <img class="img-fluid w-100" src="img/portfolio/Android-basics2.jpg" alt="">
-                        </a>
-                    </div>
-                  <div class="short_info">
-                    <h4><a href="blog.html">Android Workshop</a></h4>
-                    <p>By Hackfest 2017</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 all blog">
-                <div class="portfolio_box">
-                    <div class="single_portfolio">
-                        <a href="blog.html">
-                          <img class="img-fluid w-100" src="img/portfolio/more-blogs.png" alt="">
-                        </a>
-                    </div>
-                  <div class="short_info">
-                    <h4><a href="blog.html">More Blogs</a></h4>
-                    <p>More figments of my imagination</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="col-lg-4 col-md-6 all workshop">
-                  <div class="portfolio_box">
-                      <div class="single_portfolio">
-                          <a href="blog.html">
-                            <img class="img-fluid w-100" src="img/portfolio/git.jpg" alt="">
-                          </a>
-                      </div>
-                    <div class="short_info">
-                      <h4><a href="blog.html">Git Workshop</a></h4>
-                      <p>By Cyberlabs</p>
-                    </div>
-                  </div>
-                </div>
           </div>
         </div>
-            <div class="filters-content">
-				<div class="row portfolio-grid justify-content-center">
-					<div class="col-lg-4 col-md-6 all latest">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p1.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p1.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">minimal design</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all popular">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p2.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p2.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">Paint wall</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all latest">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p3.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p3.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">female light</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all popular">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p4.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p4.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">fourth air</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all following">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p6.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p5.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">together sign</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all upcoming">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p5.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p6.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">multiply fowl</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all upcoming following">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p7.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p7.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">green heaven</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all following">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p8.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p8.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4>fly male</h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 all upcoming">
-						<div class="portfolio_box">
-							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p9.jpg" alt="">
-								<div class="overlay"></div>
-								<a href="img/portfolio/p9.jpg" class="img-gal">
-									<div class="icon">
-										<span class="lnr lnr-cross"></span>
-									</div>
-								</a>
-							</div>
-							<div class="short_info">
-								<h4><a href="portfolio-details.html">season face</a></h4>
-								<p>Animated, portfolio</p>
-							</div>
-						</div>
-					</div>
-				</div>
+        
 			</div>
         </div>
     </section>
     <!--================End Portfolio Area =================-->
     
-    <!--================ Start Newsletter Area =================-->
-    <section class="newsletter_area">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-12">
-                    <div class="subscription_box text-center">
-                        <h2 class="text-uppercase text-white">get update from anywhere</h2>
-                        <p class="text-white">
-                            Bearing Void gathering light light his eavening unto dont afraid. 
-                        </p>
-                        <div class="subcribe-form" id="mc_embed_signup">
-                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
-                                <input name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" type="email">
-                                <div style="position: absolute; left: -5000px;">
-                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-                                </div>
-                                <button class="primary-btn hover d-inline">Get Started</button>
-                                <div class="info"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================ End Newsletter Area =================-->
-        
+   
 	<!--================Footer Area =================-->
 	<footer class="footer_area">
       <div class="container">
