@@ -85,7 +85,7 @@
 							<h3 class="text-uppercase">Hello</h3>
 							<h1 class="text-uppercase">I am Jibin Mathews</h1>
 							<h5 class="text-uppercase">A Software Engineer</h5>
-							<div class="d-flex align-items-center">
+							<div class="d-flex align-items-center" id="hire-me">
 								<a class="primary_btn" href="https://in.linkedin.com/in/jibinmathews7"><span>Hire Me</span></a>
 								<!-- <a class="primary_btn tr-bg" href="#"><span>Get CV</span></a> -->
 							</div>
@@ -122,7 +122,7 @@
               Have some interesting travel plans? Count me in. <br />
               Got some interesting problem (tech or otherwise)? Let me help<br />
 						</p>
-						<a class="primary_btn" href="#"><span>Download CV</span></a>
+						<a class="primary_btn" href="#" id="hire-me-2"><span>Download CV</span></a>
 					</div>
 				</div>
 			</div>
@@ -539,7 +539,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
 	<script src="js/jquery.ajaxchimp.min.js"></script>
   <script src="js/theme.js"></script>
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+	
+	<script>
+		if (window.location && window.location.search && window.location.search.includes('hire=false')) {
+			document.getElementById("hire-me").innerHTML = "";
+			document.getElementById("hire-me-2").innerHTML = "";
+		}
+	</script>
 </body>
 
 </html>
