@@ -31,7 +31,7 @@
     "lodash": "^3.0.0",
     "mongoose": "^4.0",
     "mongoose-schema-extend": "^0.2.2",
-    "morgan": "^1.0.0",
+    "morgan": "^1.9.1",
     "nodemailer": "^2.6.4",
     "redis": "^2.6.5",
     "request": "^2.79.0",
