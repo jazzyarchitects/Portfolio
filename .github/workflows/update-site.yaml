@@ -1,0 +1,59 @@
+name: Update portfolio
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  upload:
+    name: Website upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+        with:
+          persist-credentials: false
+
+      - name: Setup AWS Cli
+        uses: chrislennon/action-aws-cli@v1.1
+
+      - name: Check Bucket
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-south-1
+        run: aws s3 ls
+
+
+      - name: Upload
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-south-1
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        run: aws s3 cp "${GITHUB_WORKSPACE}/" "s3://${AWS_S3_BUCKET}" --recursive
+
+
+  clear-cache:
+    needs: upload
+    name: Cloudflare clear cache
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify token
+        env:
+          CLOUDFLARE_AUTH: ${{ secrets.CLOUDFLARE_AUTH }}
+        run: |
+          curl -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+            -H "Authorization: Bearer ${CLOUDFLARE_AUTH}" \
+            -H "Content-Type:application/json"
+      - name: Purge
+        env:
+          CLOUDFLARE_AUTH: ${{ secrets.CLOUDFLARE_AUTH }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE}/purge_cache" \
+            -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+            -H "X-Auth-Key: ${CLOUDFLARE_AUTH}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
