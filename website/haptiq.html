@@ -7,12 +7,12 @@
 <html>
 
 <head>
-  <title>FoodKart</title>
+  <title>Projects</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-  <link rel="stylesheet" href="../assets/css/solid-state.css" />
-  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="css/solid-state.css" />
+  <link rel="stylesheet" href="css/main.css" />
   <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
@@ -33,7 +33,7 @@
           <a href="#" onclick="window.open('../', '_self')">Home</a>
         </li>
         <li>
-          <a href="#" class="active">FoodKart</a>
+          <a href="#" class="active">Haptiq</a>
         </li>
         <li>
           <a href="#" onclick="window.open('./', '_self')">Projects</a>
@@ -50,16 +50,16 @@
         <div class="wrapper wrapper2 style0 inverted">
           <div class="project">
             <a href="#" class="image">
-              <img src="/img/foodkart-main.png" alt="" />
+              <img src="/img/haptiq-main.png" alt="" style="object-fit:cover" />
             </a>
             <div class="content">
-              <br />
-              <h2 class="major" style="margin-bottom: 2px;">FoodKart</h2>
+              <h2 class="major" style="margin-bottom: 2px;">Haptiq</h2>
               <hr style="margin: 2px 0;" />
-              <p>An android application created with an objective to make ordering food more economical for students. This app
-                pools enables individuals to pool together orders of various individuals together hence benefiting the individuals.
+              <p>The prototype built during Hackfest 2017 in 36hrs, Haptiq is a fingerprint based authentication system for
+                social logins. It enables you to login to various social sites using your Android Phone's Biometric authentication
+                system. Your data is kept confidential. The app uses AES 256-bit encryption for communicating with the chrome
+                extension.
               </p>
-              <br />
               <div class="buttons" style="margin-top: 10px;">
                 <b>Project Repositories</b>&nbsp;&nbsp;
                 <a class="waves-effect waves-teal btn" href="https://github.com/code-lucidal58/Haptiq" target="_blank">
@@ -82,36 +82,55 @@
 
             <h3 class="major">Why?</h3>
             <hr style="margin: 2px 0;" />
-            <p>We used to live in hostel during our engineering. And as usual mess food was not edible for most of the times.
-              During those days we used to order food from outside. Now most of the time there were groups of 2-3 friends
-              who used to order few items but most of the times we couldn't cross the minimum order amount requirements set
-              by restuarants. So we used to go room to room asking if anyone wants to order from the same restuarant. This
-              was a tiresome and frustrating thing to do everytime. So one day I had a thought - Why is there no app which
-              could help me find such like minded people?
-              <br />
-              <br /> Hence foodkart was born. We worked for 36hours straight in an hackathon to build a prototype of the app.
+            <p>One day as usual I was browsing Facebook and then I went outside for a call. In the meantime my room mate opened
+              my Facebook account on my laptop and then posted some embarrassing thing on my wall. Then from that day I used
+              to log out every time I went away from laptop. But then one day he used my saved password to login to my account
+              and do it again. Now I deleted all saved passwords and used to log out every time I went outside. But typing
+              the password everytime was becoming a frustrating task.
+              <br /> I wondered if I could make something which would enable me to login to social sites without the need of password
+              everytime in such a way that no one else can access it also...
             </p>
+
+            <h3 class="major">See it in action</h3>
+            <hr style="margin: 2px 0;" />
+            <table width="100%">
+              <tr>
+                <td colspan="2" align="center">
+                  <img src="/img/haptiq/haptiq-gif.gif" height="220" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <iframe height="250" width="430" src="https://www.youtube.com/embed/5-DhJmpos5s" frameborder="0" allowfullscreen></iframe>
+                </td>
+                <td>
+                  <iframe height="250" width="430" src="https://www.youtube.com/embed/JODCdEAgNwA" frameborder="0" allowfullscreen>
+                  </iframe>
+                </td>
+              </tr>
+            </table>
 
             <h3 class="major">Screens</h3>
             <table>
               <tr>
                 <td width="50%">
-                  <img src="/img/foodkart1.gif" width="100%" />
+                  <img src="/img/haptiq/haptiq-screen-1.png" width="100%" />
                 </td>
                 <td width="50%">
-                  <img src="/img/foodkart2.gif" width="100%" />
+                  <img src="/img/haptiq/haptiq-screen-2.png" width="100%" />
+                  </iframe>
                 </td>
               </tr>
             </table>
 
 
-            <!-- <h3 class="major">Other Projects</h3> -->
-            <!-- <hr style="margin: 2px 0;" /> -->
+            <h3 class="major">Other Projects</h3>
+            <hr style="margin: 2px 0;" />
             <section class="features">
               <article>
-                <h3 class="major">Haptiq</h3>
-                <p>Fingerprint based authentication system for social sites</p>
-                <a href="haptiq.html" class="special">Learn more</a>
+                <h3 class="major">FoodKart</h3>
+                <p>Order Pooling application</p>
+                <a href="foodkart.html" class="special">Learn more</a>
               </article>
               <article>
                 <h3 class="major">Music Player</h3>
@@ -127,19 +146,20 @@
 
     </div>
 
+
     <!-- Footer -->
     <footer id="footer" data-include-html="../footer.html"></footer>
 
   </div>
 
   <!-- Scripts -->
-  <script src="../assets/js/jquery.min.js"></script>
-  <script src="../assets/js/jquery.scrollex.min.js"></script>
-  <script src="../assets/js/jquery.scrolly.min.js"></script>
-  <script src="../assets/js/skel.min.js"></script>
-  <script src="../assets/js/util.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.scrollex.min.js"></script>
+  <script src="js/jquery.scrolly.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/util.js"></script>
   <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-  <script src="../assets/js/main.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 
